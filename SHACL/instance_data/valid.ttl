@@ -1,0 +1,67 @@
+@prefix : <https://epfl.ch/example/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix sd: <https://w3id.org/okn/o/sd#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:SDSC a schema:Organization ;
+    schema:legalName "Swiss Data Science Center" .
+
+:SubmissionWithManyMistakes  a schema:SoftwareApplication ;
+    schema:applicationCategory "Category A" ;
+    schema:citation "A Citation" ;
+    schema:codeRepository <https://github.com/SDSC-ORD/gimie> ;
+    schema:conditionsOfAccess "Ask for access" ;
+    schema:dateCreated "2022-12-01"^^xsd:date ;
+    schema:datePublished "2023-01-01"^^xsd:date ;
+    schema:description "Some description of Gimie" ;
+    schema:downloadUrl <https://github.com/SDSC-ORD/gimie/find/main> ;
+    schema:featureList "Features or modules provided by this application" ;
+    schema:image <https://i.natgeofe.com/n/c9107b46-78b1-4394-988d-53927646c72b/1095_3x2.jpg> ;
+    schema:isAccessibleForFree "true"^^xsd:boolean ;
+    schema:isBasedOn <https://github.com/proycon/codemetapy> ;
+    schema:license <https://spdx.org/licenses/Apache-2.0.html> ;
+    schema:maintainer [a schema:Person ;
+                        schema:affiliation :SDSC ;
+                        schema:email "robin.franken@epfl.ch" ;
+                        schema:familyName "Franken" ;
+                        schema:givenName "Robin" ;
+                        ] ;
+    schema:memoryRequirements "Yes, lots of memory" ;
+    schema:name "Gimie" ;
+    schema:operatingSystem "Yes, we support operating systems" ;
+    schema:producer :SDSC ;
+    schema:programmingLanguage [a schema:ComputerLanguage ;
+                                schema:name "Python"] ;
+    schema:softwareRequirements "probably there are requirements" ;
+    schema:softwareVersion "2.2.2" ;
+    schema:supportingData [a schema:DataFeed ;
+                           schema:description "some datafeed" ;
+                           schema:distribution [a schema:DataDownload ;
+                           ] ;
+                           schema:measurementTechnique "some measurement technique" ;
+                           schema:name "My dataset" ;
+                           schema:variableMeasured "some variable" ;
+                            ];
+    schema:url <https://github.com/SDSC-ORD/gimie> ;
+    sd:hasAcknowledgements "We acknowledge everyone, especially codeMetaPy";
+    sd:hasDocumentation <https://pypi.org/project/gimie/> ;
+    sd:hasDownloadInstructions "download it from github" ;
+    sd:hasExecutableInstructions "execute it in CL or as python package" ;
+    sd:hasExecutableNotebook <https://pypi.org/project/gimie/> ;
+    sd:hasInput [a sd:DatasetSpecification ;
+                schema:name "the input"    ] ;
+    sd:hasInstallationInstructions "install using pip" ;
+    sd:hasOutput [a sd:DatasetSpecification ;
+                 schema:name "the output"   ] ;
+    sd:hasParameter [a sd:DatasetSpecification ;
+                    schema:name "the parameter"] ;
+    sd:hasUsageNotes "consider using this software carefully";
+    sd:readme <https://github.com/SDSC-ORD/gimie/blob/main/README.md>;
+    sd:hasFunding [a sd:FundingInformation ;
+                  schema:name "Some funding information" ;]
+    .

@@ -1,0 +1,31 @@
+@prefix codemeta: <https://codemeta.github.io/terms/> .
+@prefix schema: <http://schema.org/> .
+
+[] a schema:SoftwareSourceCode ;
+    schema:author [ a schema:Person ;
+            schema:affiliation [ a schema:Organization ;
+                    schema:name "KNAW Humanities Cluster & CLST, Radboud University" ] ;
+            schema:familyName "van Gompel" ;
+            schema:givenName "Maarten" ;
+            schema:url <https://proycon.anaproy.nl> ] ;
+    schema:codeRepository <https://github.com/proycon/codemetapy> ;
+    schema:dateCreated "2018-04-16T12:06:45Z"^^schema:Date ;
+    schema:dateModified "2022-11-21T17:03:27Z"^^schema:Date ;
+    schema:description "A Python package for generating and working with codemeta" ;
+    schema:keywords "codemeta",
+        "linked-data",
+        "metadata",
+        "metadata-extractor",
+        "schema-org",
+        "scientific" ;
+    schema:license <http://spdx.org/licenses/GPL-3.0-only> ;
+    schema:maintainer [ a schema:Person ;
+            schema:affiliation [ a schema:Organization ;
+                    schema:name "KNAW Humanities Cluster & CLST, Radboud University" ] ;
+            schema:familyName "van Gompel" ;
+            schema:givenName "Maarten" ;
+            schema:url <https://proycon.anaproy.nl> ] ;
+    schema:name "codemetapy" ;
+    schema:url <https://codemeta.github.io/> ;
+    codemeta:issueTracker <https://github.com/proycon/codemetapy/issues> .
+

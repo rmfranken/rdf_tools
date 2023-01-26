@@ -1,0 +1,1116 @@
+@prefix schema: <http://schema.org/>.
+@prefix sd: <https://w3id.org/okn/o/sd#>.
+@prefix bio: <https://bioschemas.org/>.
+@prefix ren: <https://swissdatasciencecenter.github.io/renku-ontology#>.
+@prefix spe: <https://openschemas.github.io/spec-container/specifications/>.
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh:   <http://www.w3.org/ns/shacl#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix shsh: <http://www.w3.org/ns/shacl-shacl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+
+schema:SoftwareApplication
+  a rdfs:Class ;
+  a sh:NodeShape ;
+  rdfs:comment "A software application."^^rdf:HTML ;
+  rdfs:label "Software application" ;
+  rdfs:subClassOf schema:CreativeWork ;
+  sh:property schema:SoftwareApplication-applicationCategory ,
+              schema:CreativeWork-citation ,
+              schema:SoftwareSourceCode-codeRepository ,
+              schema:CreativeWork-conditionsOfAccess ,
+              schema:CreativeWork-dateCreated ,
+              schema:CreativeWork-datePublished ,
+              schema:Thing-description ,
+              schema:SoftwareApplication-downloadUrl ,
+              schema:SoftwareApplication-featureList ,
+              schema:Thing-image ,
+              schema:CreativeWork-isAccessibleForFree ,
+              schema:CreativeWork-isBasedOn ,
+              schema:CreativeWork-license ,
+              schema:CreativeWork-maintainer ,
+              schema:SoftwareApplication-memoryRequirements ,
+              schema:Thing-name ,
+              schema:SoftwareApplication-operatingSystem ,
+              schema:CreativeWork-producer ,
+              schema:SoftwareSourceCode-programmingLanguage ,
+              schema:SoftwareApplication-softwareRequirements ,
+              schema:SoftwareApplication-softwareVersion ,
+              schema:SoftwareApplication-supportingData ,
+              schema:Thing-url ,
+              sd:SoftwareApplication-hasAcknowledgements ,
+              sd:SoftwareApplication-hasDocumentation ,
+              sd:SoftwareApplication-hasDownloadInstructions ,
+              sd:SoftwareApplication-hasExecutableInstructions ,
+              sd:SoftwareApplication-hasExecutableNotebook ,
+              sd:SoftwareApplication-hasInput ,
+              sd:SoftwareApplication-hasInstallationInstructions ,
+              sd:SoftwareApplication-hasOutput ,
+              sd:SoftwareApplication-hasParameter ,
+              sd:SoftwareApplication-hasUsageNotes ,
+              sd:SoftwareApplication-readme ,
+              sd:SoftwareApplication-hasFunding ;
+.
+schema:applicationCategory a rdf:Property ;
+    rdfs:label "applicationCategory" ;
+    rdfs:comment "Type of software application, e.g. 'Game, Multimedia'." ;
+    schema:domainIncludes schema:SoftwareApplication ;
+    schema:rangeIncludes schema:Text,
+        schema:URL .
+
+schema:citation a rdf:Property ;
+    rdfs:label "citation" ;
+    rdfs:comment "A citation or reference to another creative work, such as another publication, web page, scholarly article, etc." ;
+    schema:domainIncludes schema:CreativeWork ;
+    schema:rangeIncludes schema:CreativeWork,
+        schema:Text .
+
+schema:codeRepository a rdf:Property ;
+    rdfs:label "codeRepository" ;
+    rdfs:comment "Link to the repository where the un-compiled, human readable code and related code is located (SVN, GitHub, CodePlex)." ;
+    schema:domainIncludes schema:SoftwareSourceCode ;
+    schema:rangeIncludes schema:URL .        
+
+schema:conditionsOfAccess a rdf:Property ;
+    rdfs:label "conditionsOfAccess" ;
+    rdfs:comment "Conditions that affect the availability of, or method(s) of access to, an item. Typically used for real world items such as an [[ArchiveComponent]] held by an [[ArchiveOrganization]]. This property is not suitable for use as a general Web access control mechanism. It is expressed only in natural language.\\n\\nFor example \"Available by appointment from the Reading Room\" or \"Accessible only from logged-in accounts \". " ;
+    schema:domainIncludes schema:CreativeWork ;
+    schema:isPartOf <https://pending.schema.org> ;
+    schema:rangeIncludes schema:Text ;
+    schema:source <https://github.com/schemaorg/schemaorg/issues/2173> .
+
+schema:dateCreated a rdf:Property ;
+    rdfs:label "dateCreated" ;
+    rdfs:comment "The date on which the CreativeWork was created or the item was added to a DataFeed." ;
+    schema:domainIncludes schema:CreativeWork,
+        schema:DataFeedItem ;
+    schema:rangeIncludes schema:Date,
+        schema:DateTime .
+
+schema:datePublished a rdf:Property ;
+    rdfs:label "datePublished" ;
+    rdfs:comment "Date of first broadcast/publication." ;
+    schema:domainIncludes schema:CreativeWork ;
+    schema:rangeIncludes schema:Date,
+        schema:DateTime .
+
+schema:description a rdf:Property ;
+    rdfs:label "description" ;
+    rdfs:comment "A description of the item." ;
+    owl:equivalentProperty dcterms:description ;
+    schema:domainIncludes schema:Thing ;
+    schema:rangeIncludes schema:Text .
+
+schema:downloadUrl a rdf:Property ;
+    rdfs:label "downloadUrl" ;
+    rdfs:comment "If the file can be downloaded, URL to download the binary." ;
+    schema:domainIncludes schema:SoftwareApplication ;
+    schema:rangeIncludes schema:URL .
+
+schema:featureList a rdf:Property ;
+    rdfs:label "featureList" ;
+    rdfs:comment "Features or modules provided by this application (and possibly required by other applications)." ;
+    schema:domainIncludes schema:SoftwareApplication ;
+    schema:rangeIncludes schema:Text .
+
+schema:image a rdf:Property ;
+    rdfs:label "image" ;
+    rdfs:comment "An image of the item. This can be a [[URL]] or a fully described [[ImageObject]]." ;
+    schema:domainIncludes schema:Thing ;
+    schema:rangeIncludes schema:ImageObject,
+        schema:URL .
+
+schema:isAccessibleForFree a rdf:Property ;
+    rdfs:label "isAccessibleForFree" ;
+    rdfs:comment "A flag to signal that the item, event, or place is accessible for free." ;
+    schema:domainIncludes schema:CreativeWork,
+        schema:Event,
+        schema:Place ;
+    schema:rangeIncludes schema:Boolean .
+
+schema:isBasedOn a rdf:Property ;
+    rdfs:label "isBasedOn" ;
+    rdfs:comment "A resource from which this work is derived or from which it is a modification or adaption." ;
+    schema:domainIncludes schema:CreativeWork ;
+    schema:rangeIncludes schema:CreativeWork,
+        schema:Product,
+        schema:URL .
+
+schema:license a rdf:Property ;
+    rdfs:label "license" ;
+    rdfs:comment "A license document that applies to this content, typically indicated by URL." ;
+    schema:domainIncludes schema:CreativeWork ;
+    schema:rangeIncludes schema:CreativeWork,
+        schema:URL .
+
+schema:maintainer a rdf:Property ;
+    rdfs:label "maintainer" ;
+    rdfs:comment """A maintainer of a [[Dataset]], software package ([[SoftwareApplication]]), or other [[Project]]. A maintainer is a [[Person]] or [[Organization]] that manages contributions to, and/or publication of, some (typically complex) artifact. It is common for distributions of software and data to be based on "upstream" sources. When [[maintainer]] is applied to a specific version of something e.g. a particular version or packaging of a [[Dataset]], it is always  possible that the upstream source has a different maintainer. The [[isBasedOn]] property can be used to indicate such relationships between datasets to make the different maintenance roles clear. Similarly in the case of software, a package may have dedicated maintainers working on integration into software distributions such as Ubuntu, as well as upstream maintainers of the underlying work.
+      """ ;
+    schema:domainIncludes schema:CreativeWork ;
+    schema:isPartOf <https://pending.schema.org> ;
+    schema:rangeIncludes schema:Organization,
+        schema:Person ;
+    schema:source <https://github.com/schemaorg/schemaorg/issues/2311> .
+
+schema:affiliation a rdf:Property ;
+    rdfs:label "affiliation" ;
+    rdfs:comment "An organization that this person is affiliated with. For example, a school/university, a club, or a team." ;
+    rdfs:subPropertyOf schema:memberOf ;
+    schema:domainIncludes schema:Person ;
+    schema:rangeIncludes schema:Organization .
+
+schema:email a rdf:Property ;
+    rdfs:label "email" ;
+    rdfs:comment "Email address." ;
+    schema:domainIncludes schema:ContactPoint,
+        schema:Organization,
+        schema:Person ;
+    schema:rangeIncludes schema:Text .
+
+schema:familyName a rdf:Property ;
+    rdfs:label "familyName" ;
+    rdfs:comment "Family name. In the U.S., the last name of a Person." ;
+    schema:domainIncludes schema:Person ;
+    schema:rangeIncludes schema:Text .
+
+schema:givenName a rdf:Property ;
+    rdfs:label "givenName" ;
+    rdfs:comment "Given name. In the U.S., the first name of a Person." ;
+    schema:domainIncludes schema:Person ;
+    schema:rangeIncludes schema:Text .
+
+schema:legalName a rdf:Property ;
+    rdfs:label "legalName" ;
+    rdfs:comment "The official name of the organization, e.g. the registered company name." ;
+    schema:domainIncludes schema:Organization ;
+    schema:rangeIncludes schema:Text ;
+    schema:source <http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms> .
+
+schema:memoryRequirements a rdf:Property ;
+    rdfs:label "memoryRequirements" ;
+    rdfs:comment "Minimum memory requirements." ;
+    schema:domainIncludes schema:SoftwareApplication ;
+    schema:rangeIncludes schema:Text.
+
+schema:name a rdf:Property ;
+    rdfs:label "name" ;
+    rdfs:comment "The name of the item." ;
+    rdfs:subPropertyOf rdfs:label ;
+    owl:equivalentProperty dcterms:title ;
+    schema:domainIncludes schema:Thing ;
+    schema:rangeIncludes schema:Text .
+
+schema:operatingSystem a rdf:Property ;
+    rdfs:label "operatingSystem" ;
+    rdfs:comment "Operating systems supported (Windows 7, OS X 10.6, Android 1.6)." ;
+    schema:domainIncludes schema:SoftwareApplication ;
+    schema:rangeIncludes schema:Text .
+
+schema:producer a rdf:Property ;
+    rdfs:label "producer" ;
+    rdfs:comment "The person or organization who produced the work (e.g. music album, movie, TV/radio series etc.)." ;
+    schema:domainIncludes schema:CreativeWork ;
+    schema:rangeIncludes schema:Organization,
+        schema:Person .
+
+schema:programmingLanguage a rdf:Property ;
+    rdfs:label "programmingLanguage" ;
+    rdfs:comment "The computer programming language." ;
+    schema:domainIncludes schema:SoftwareSourceCode ;
+    schema:rangeIncludes schema:ComputerLanguage,
+        schema:Text .
+
+schema:softwareRequirements a rdf:Property ;
+    rdfs:label "softwareRequirements" ;
+    rdfs:comment "Component dependency requirements for application. This includes runtime environments and shared libraries that are not included in the application distribution package, but required to run the application (examples: DirectX, Java or .NET runtime)." ;
+    schema:domainIncludes schema:SoftwareApplication ;
+    schema:rangeIncludes schema:Text,
+        schema:URL .
+
+schema:softwareVersion a rdf:Property ;
+    rdfs:label "softwareVersion" ;
+    rdfs:comment "Version of the software instance." ;
+    schema:domainIncludes schema:SoftwareApplication ;
+    schema:rangeIncludes schema:Text .
+
+schema:url a rdf:Property ;
+    rdfs:label "url" ;
+    rdfs:comment "URL of the item." ;
+    schema:domainIncludes schema:Thing ;
+    schema:rangeIncludes schema:URL .
+
+sd:hasAcknowledgements rdf:type owl:DatatypeProperty ;
+    rdfs:domain sd:Software ;
+    rdfs:range xsd:string ;
+    rdfs:comment "String with the people, organizations and other contributors acknowledged by the authors."@en ;
+    rdfs:label "has acknowledgements"@en .    
+
+
+sd:hasDocumentation rdf:type owl:DatatypeProperty ;
+    rdfs:domain sd:Software ;
+    rdfs:range xsd:anyURI ;
+    rdfs:comment "Pointer to the documentation of the model"@en ;
+    rdfs:label "has documentation"@en .
+
+
+
+sd:hasDownloadInstructions rdf:type owl:DatatypeProperty ;
+    rdfs:domain sd:Software ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Instructions needed to download a software component. The difference with `hasDownloadURL` is that this property captures the human readable instructions required to download software. For example, sometimes an authentication is needed, users need to fill in a form, etc."@en ;
+    rdfs:label "has download instructions"@en .
+
+
+sd:hasExecutableInstructions rdf:type owl:DatatypeProperty ;
+    rdfs:domain sd:Software ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Instructions that indicate how a software component should be executed. The difference with `hasExecutionCommand` is that the execution instructions aim to be human-readable, and have explanations between the different commands and instructions"@en ;
+    rdfs:label "has executable instructions"@en .
+
+sd:hasExecutableNotebook rdf:type owl:DatatypeProperty ;
+    rdfs:domain sd:Software ;
+    rdfs:range xsd:anyURI ;
+    rdfs:comment "Property that links a software component with an executable notebook (e.g., Jupyter notebook) that illustrates how to use it in an executable manner."@en ;
+    rdfs:label "has executable notebook"@en .
+
+sd:hasFunding rdf:type owl:ObjectProperty ;
+    rdfs:domain sd:Software ;
+    rdfs:range sd:FundingInformation ;
+    rdfs:comment "Property that links a software project to its funding information"@en ;
+    rdfs:label "has funding information"@en .
+
+sd:hasInput rdf:type owl:ObjectProperty ;
+    rdfs:domain sd:SoftwareConfiguration ;
+    sh:class sd:DatasetSpecification ;
+    rdfs:comment "Property that links a model configuration to the input types expected by it."@en ;
+    rdfs:label "has input"@en .
+
+sd:hasInstallationInstructions rdf:type owl:DatatypeProperty ;
+    rdfs:domain sd:Software ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Instructions required to install this particular piece of software. Installation instructions usually are available in a human-readable manner."@en ;
+    rdfs:label "has installation instructions"@en .
+
+sd:hasOutput rdf:type owl:ObjectProperty ;
+    rdfs:domain sd:SoftwareConfiguration ;
+    rdfs:range sd:DatasetSpecification ;
+    rdfs:comment "Property that expresses what are the outputs of a model"@en ;
+    rdfs:label "has output"@en .
+
+sd:hasParameter rdf:type owl:ObjectProperty ;
+        rdfs:domain sd:SoftwareConfiguration ;
+        rdfs:range sd:Parameter ;
+        rdfs:comment "Property that indicates the parameters of a model configuration"@en ;
+        rdfs:label "has parameter"@en .
+
+sd:hasSoftwareImage rdf:type owl:ObjectProperty ,
+                           owl:FunctionalProperty ;
+    rdfs:domain sd:SoftwareConfiguration ;
+    rdfs:range sd:SoftwareImage ;
+    rdfs:comment "Function to link a function with its corresponding container"@en ;
+    rdfs:label "has software image"@en .
+
+sd:hasUsageNotes rdf:type owl:DatatypeProperty ;
+    rdfs:domain sd:Software ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Property that describes the usage considerations of a particular software. These notes capture the rationale of for that software configuration, along with an explanation for sample inputs, things to consider when running the model with data, etc."@en ;
+    rdfs:label "has usage notes"@en .                
+
+sd:readme rdf:type owl:DatatypeProperty ;
+    rdfs:subPropertyOf <https://codemeta.github.io/terms/readme> ;
+    rdfs:domain sd:Software ;
+    rdfs:range xsd:anyURI ;
+    rdfs:comment "URl to the readme file of a software component"@en ;
+    rdfs:label "readme"@en .
+
+schema:identifier a rdf:Property ;
+    rdfs:label "identifier" ;
+    rdfs:comment """The identifier property represents any kind of identifier for any kind of [[Thing]], such as ISBNs, GTIN codes, UUIDs etc. Schema.org provides dedicated properties for representing many of these, either as textual strings or as URL (URI) links. See [background notes](/docs/datamodel.html#identifierBg) for more details.
+        """ ;
+    owl:equivalentProperty dcterms:identifier ;
+    schema:domainIncludes schema:Thing ;
+    schema:rangeIncludes schema:PropertyValue,
+        schema:Text,
+        schema:URL .
+
+sd:fundingSource rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf owl:topObjectProperty ;
+    rdfs:domain sd:FundingInformation ;
+    rdfs:range schema:Organization ;
+    rdfs:comment "Link to the organization funding a software component"@en ;
+    rdfs:label "funding source"@en .
+
+sd:fundingGrant rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf <https://codemeta.github.io/terms/funding> ;
+              rdfs:domain sd:FundingInformation ;
+              rdfs:range xsd:string ;
+              rdfs:comment "Grant number used for funding"@en ;
+              rdfs:label "funding grant"@en .
+
+sd:hasFormat rdf:type owl:DatatypeProperty ;
+    rdfs:domain [ rdf:type owl:Class ;
+                    owl:unionOf ( sd:DatasetSpecification
+                                sd:Visualization
+                                )
+                ] ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Format followed by a file. For example, txt, nc, etc."@en ;
+    rdfs:label "has format"@en .
+
+schema:defaultValue a rdf:Property ;
+    rdfs:label "defaultValue" ;
+    rdfs:comment "The default value of the input.  For properties that expect a literal, the default is a literal value, for properties that expect an object, it's an ID reference to one of the current values." ;
+    schema:domainIncludes schema:PropertyValueSpecification ;
+    schema:rangeIncludes schema:Text,
+        schema:Thing .
+
+schema:valueRequired a rdf:Property ;
+    rdfs:label "valueRequired" ;
+    rdfs:comment "Whether the property must be filled in to complete the action.  Default is false." ;
+    schema:domainIncludes schema:PropertyValueSpecification ;
+    schema:rangeIncludes schema:Boolean .
+
+ren:prefix
+    a owl:DatatypeProperty ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Specifies that this argument is supplied to the command with a prefix as in <prefix>=<path>"@en ;
+    rdfs:label "prefix"@en ;
+    .
+
+sd:availableInRegistry rdf:type owl:DatatypeProperty ;
+                     rdfs:domain sd:SoftwareImage ;
+                     rdfs:range xsd:anyURI ;
+                     rdfs:comment "Property that indicates in which registry the software image being described can be found. For example, https://hub.docker.com"@en ;
+                     rdfs:label "available in registry"@en .
+
+
+#__________________________________________#
+
+
+
+
+schema:SoftwareApplication-applicationCategory
+  a sh:PropertyShape ;
+  sh:path schema:applicationCategory ;
+  sh:description "Type of software application, e.g. 'Game, Multimedia'."^^rdf:HTML ;
+  sh:name "applicationCategory" ;
+  sh:or (
+      [
+        sh:nodeKind sh:IRI ;
+      ]
+      [
+        sh:datatype xsd:string ;
+      ]
+    ) ;
+.
+
+schema:CreativeWork-citation
+  a sh:PropertyShape ;
+  sh:path schema:citation ;
+  sh:description "A citation or reference to another creative work, such as another publication, web page, scholarly article, etc."^^rdf:HTML ;
+  sh:name "citation" ;
+  sh:or (
+      [
+        sh:class schema:CreativeWork ;
+      ]
+      [
+        sh:datatype xsd:string ;
+      ]
+    ) ;
+.
+schema:SoftwareSourceCode-codeRepository
+  a sh:PropertyShape ;
+  sh:path schema:codeRepository ;
+  sh:description "Link to the repository where the un-compiled, human readable code and related code is located (SVN, github, CodePlex)."^^rdf:HTML ;
+  sh:name "codeRepository" ;
+  sh:nodeKind sh:IRI ;
+.
+
+schema:CreativeWork-conditionsOfAccess
+  a sh:PropertyShape ;
+  sh:path schema:conditionsOfAccess ;
+  sh:datatype xsd:string ;
+  sh:description "Conditions that affect the availability of, or method(s) of access to, an item. Typically used for real world items such as an [[ArchiveComponent]] held by an [[ArchiveOrganization]]. This property is not suitable for use as a general Web access control mechanism. It is expressed only in natural language.\\n\\nFor example \"Available by appointment from the Reading Room\" or \"Accessible only from logged-in accounts \". "^^rdf:HTML ;
+  sh:name "conditionsOfAccess" ;
+.        
+
+schema:CreativeWork-dateCreated
+  a sh:PropertyShape ;
+  sh:path schema:dateCreated ;
+  sh:description "The date on which the CreativeWork was created or the item was added to a DataFeed."^^rdf:HTML ;
+  sh:name "dateCreated" ;
+  sh:or (
+      [
+        sh:datatype xsd:date ;
+      ]
+      [
+        sh:datatype xsd:dateTime ;
+      ]
+    ) ;
+.
+
+schema:CreativeWork-datePublished
+  a sh:PropertyShape ;
+  sh:path schema:datePublished ;
+  sh:description "Date of first broadcast/publication."^^rdf:HTML ;
+  sh:name "datePublished" ;
+  sh:or (
+      [
+        sh:datatype xsd:date ;
+      ]
+      [
+        sh:datatype xsd:dateTime ;
+      ]
+    ) ;
+.
+
+schema:Thing-description
+  a sh:PropertyShape ;
+  sh:path schema:description ;
+  sh:datatype xsd:string ;
+  sh:description "A description of the item."^^rdf:HTML ;
+  sh:name "description" ;
+.
+
+schema:SoftwareApplication-downloadUrl
+  a sh:PropertyShape ;
+  sh:path schema:downloadUrl ;
+  sh:description "If the file can be downloaded, URL to download the binary."^^rdf:HTML ;
+  sh:name "downloadUrl" ;
+  sh:nodeKind sh:IRI ;
+.
+
+schema:SoftwareApplication-featureList
+  a sh:PropertyShape ;
+  sh:path schema:featureList ;
+  sh:description "Features or modules provided by this application (and possibly required by other applications)."^^rdf:HTML ;
+  sh:name "featureList" ;
+  sh:datatype xsd:string ;
+.
+
+schema:Thing-image
+  a sh:PropertyShape ;
+  sh:path schema:image ;
+  sh:description "An image of the item. This can be a [[URL]] or a fully described [[ImageObject]]."^^rdf:HTML ;
+  sh:name "image" ;
+  sh:or (
+      [
+        sh:class schema:ImageObject ;
+      ]
+      [
+        sh:nodeKind sh:IRI ;
+      ]
+    ) ;
+.
+
+schema:CreativeWork-isAccessibleForFree
+  a sh:PropertyShape ;
+  sh:path schema:isAccessibleForFree ;
+  sh:datatype xsd:boolean ;
+  sh:description "A flag to signal that the item, event, or place is accessible for free."^^rdf:HTML ;
+  sh:name "isAccessibleForFree" ;
+.
+
+schema:CreativeWork-isBasedOn
+  a sh:PropertyShape ;
+  sh:path schema:isBasedOn ;
+  sh:description "A resource from which this work is derived or from which it is a modification or adaption."^^rdf:HTML ;
+  sh:name "isBasedOn" ;
+  sh:or (
+      [
+        sh:class schema:CreativeWork ;
+      ]
+      [
+        sh:class schema:Product ;
+      ]
+      [
+        sh:nodeKind sh:IRI ;
+      ]
+    ) ;
+.
+
+schema:CreativeWork-license
+  a sh:PropertyShape ;
+  sh:path schema:license ;
+  sh:description "A license document that applies to this content, typically indicated by URL."^^rdf:HTML ;
+  sh:name "license" ;
+  sh:or (
+      [
+        sh:class schema:CreativeWork ;
+      ]
+      [
+        sh:nodeKind sh:IRI ;
+      ]
+    ) ;
+.
+
+schema:CreativeWork-maintainer
+  a sh:PropertyShape ;
+  sh:path schema:maintainer ;
+  sh:description """A maintainer of a [[Dataset]], software package ([[SoftwareApplication]]), or other [[Project]]. A maintainer is a [[Person]] or [[Organization]] that manages contributions to, and/or publication of, some (typically complex) artifact. It is common for distributions of software and data to be based on \"upstream\" sources. When [[maintainer]] is applied to a specific version of something e.g. a particular version or packaging of a [[Dataset]], it is always  possible that the upstream source has a different maintainer. The [[isBasedOn]] property can be used to indicate such relationships between datasets to make the different maintenance roles clear. Similarly in the case of software, a package may have dedicated maintainers working on integration into software distributions such as Ubuntu, as well as upstream maintainers of the underlying work.
+      """^^rdf:HTML ;
+  sh:name "maintainer" ;
+  sh:or (
+      [
+        sh:class schema:Organization ;
+      ]
+      [
+        sh:class schema:Person ;
+      ]
+    ) ;
+.
+
+schema:Person
+  a rdfs:Class ;
+  a sh:NodeShape ;
+  schema:source <http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_rNews> ;
+  rdfs:comment "A person (alive, dead, undead, or fictional)."^^rdf:HTML ;
+  rdfs:label "Person" ;
+  rdfs:subClassOf schema:Thing ;
+  owl:equivalentClass <http://xmlns.com/foaf/0.1/Person> ;
+  sh:property schema:Person-affiliation ;
+  sh:property schema:Person-email ;
+  sh:property schema:Person-familyName ;
+  sh:property schema:Person-givenName ;
+.
+
+schema:Person-affiliation
+  a sh:PropertyShape ;
+  sh:path schema:affiliation ;
+  sh:class schema:Organization ;
+  sh:description "An organization that this person is affiliated with. For example, a school/university, a club, or a team."^^rdf:HTML ;
+  sh:name "affiliation" ;
+.
+
+schema:Person-email
+  a sh:PropertyShape ;
+  sh:path schema:email ;
+  sh:datatype xsd:string ;
+  sh:description "Email address."^^rdf:HTML ;
+  sh:name "email" ;
+.
+
+schema:Person-familyName
+  a sh:PropertyShape ;
+  sh:path schema:familyName ;
+  sh:datatype xsd:string ;
+  sh:description "Family name. In the U.S., the last name of a Person."^^rdf:HTML ;
+  sh:name "familyName" ;
+.
+
+schema:Person-givenName
+  a sh:PropertyShape ;
+  sh:path schema:givenName ;
+  sh:datatype xsd:string ;
+  sh:description "Given name. In the U.S., the first name of a Person."^^rdf:HTML ;
+  sh:name "givenName" ;
+.
+
+schema:Organization
+  a rdfs:Class ;
+  a sh:NodeShape ;
+  rdfs:comment "An organization such as a school, NGO, corporation, club, etc."^^rdf:HTML ;
+  rdfs:label "Organization" ;
+  rdfs:subClassOf schema:Thing ;
+  sh:property schema:Organization-legalName ;
+
+.
+
+schema:SoftwareApplication-memoryRequirements
+  a sh:PropertyShape ;
+  sh:path schema:memoryRequirements ;
+  sh:description "Minimum memory requirements."^^rdf:HTML ;
+  sh:name "memoryRequirements" ;
+  sh:datatype xsd:string ;
+.
+
+schema:Thing-name
+  a sh:PropertyShape ;
+  sh:path schema:name ;
+  sh:datatype xsd:string ;
+  sh:description "The name of the item."^^rdf:HTML ;
+  sh:name "name" ;
+.
+
+schema:SoftwareApplication-operatingSystem
+  a sh:PropertyShape ;
+  sh:path schema:operatingSystem ;
+  sh:datatype xsd:string ;
+  sh:description "Operating systems supported (Windows 7, OSX 10.6, Android 1.6)."^^rdf:HTML ;
+  sh:name "operatingSystem" ;
+.
+
+schema:CreativeWork-producer
+  a sh:PropertyShape ;
+  sh:path schema:producer ;
+  sh:description "The person or organization who produced the work (e.g. music album, movie, tv/radio series etc.)."^^rdf:HTML ;
+  sh:name "producer" ;
+  sh:or (
+      [
+        sh:class schema:Organization ;
+      ]
+      [
+        sh:class schema:Person ;
+      ]
+    ) ;
+.
+
+schema:SoftwareSourceCode-programmingLanguage
+  a sh:PropertyShape ;
+  sh:path schema:programmingLanguage ;
+  sh:description "The computer programming language."^^rdf:HTML ;
+  sh:name "programmingLanguage" ;
+  sh:or (
+      [
+        sh:class schema:ComputerLanguage ;
+      ]
+      [
+        sh:datatype xsd:string ;
+      ]
+    ) ;
+.
+
+schema:ComputerLanguage
+  a rdfs:Class ;
+  a sh:NodeShape ;
+  rdfs:comment "This type covers computer programming languages such as Scheme and Lisp, as well as other language-like computer representations. Natural languages are best represented with the [[Language]] type."^^rdf:HTML ;
+  rdfs:label "Computer language" ;
+  rdfs:subClassOf schema:Intangible ;
+.
+
+schema:SoftwareApplication-softwareRequirements
+  a sh:PropertyShape ;
+  sh:path schema:softwareRequirements ;
+  sh:description "Component dependency requirements for application. This includes runtime environments and shared libraries that are not included in the application distribution package, but required to run the application (Examples: DirectX, Java or .NET runtime)."^^rdf:HTML ;
+  sh:name "softwareRequirements" ;
+  sh:or (
+      [
+        sh:nodeKind sh:IRI ;
+      ]
+      [
+        sh:datatype xsd:string ;
+      ]
+    ) ;
+.
+
+schema:SoftwareApplication-softwareVersion
+  a sh:PropertyShape ;
+  sh:path schema:softwareVersion ;
+  sh:datatype xsd:string ;
+  sh:description "Version of the software instance."^^rdf:HTML ;
+  sh:name "softwareVersion" ;
+  sh:pattern "[1-9]+\\.[1-9]+\\.[1-9]+" ;
+.
+
+schema:SoftwareApplication-supportingData
+  a sh:PropertyShape ;
+  sh:path schema:supportingData ;
+  sh:class schema:DataFeed ;
+  sh:description "Supporting data for a SoftwareApplication."^^rdf:HTML ;
+  sh:name "supportingData" ;
+.
+
+schema:Thing-url
+  a sh:PropertyShape ;
+  sh:path schema:url ;
+  sh:description "URL of the item."^^rdf:HTML ;
+  sh:name "url" ;
+  sh:nodeKind sh:IRI ;
+.
+
+sd:SoftwareApplication-hasAcknowledgements
+    a sh:PropertyShape ;
+    sh:path sd:hasAcknowledgements ;
+    sh:description "String with the people, organizations and other contributors acknowledged by the authors."@en ;
+    sh:name "has acknowledgements"@en ;
+    sh:datatype xsd:string ;
+    .
+
+sd:SoftwareApplication-hasDocumentation
+    a sh:PropertyShape ;
+    sh:path sd:hasDocumentation ;
+    sh:description "Pointer to the documentation of the model"@en ;
+    sh:name "has documentation"@en ;
+    sh:nodeKind sh:IRI ;
+    .
+
+sd:SoftwareApplication-hasDownloadInstructions
+    a sh:PropertyShape ;
+    sh:path sd:hasDownloadInstructions ;
+    sh:description "Instructions needed to download a software component. The difference with `hasDownloadURL` is that this property captures the human readable instructions required to download software. For example, sometimes an authentication is needed, users need to fill in a form, etc."@en ;
+    sh:name "has download instructions"@en ;
+    sh:datatype xsd:string ;
+    .
+
+
+sd:SoftwareApplication-hasExecutableInstructions
+    a sh:PropertyShape ;
+    sh:path sd:hasExecutableInstructions ;
+    sh:description "Instructions that indicate how a software component should be executed. The difference with `hasExecutionCommand` is that the execution instructions aim to be human-readable, and have explanations between the different commands and instructions"@en ;
+    sh:name "has executable instructions"@en;
+    sh:datatype xsd:string ;
+    .                           
+
+sd:SoftwareApplication-hasExecutableNotebook
+    a sh:PropertyShape ;
+    sh:path sd:hasExecutableNotebook ;
+    sh:description "Property that links a software component with an executable notebook (e.g., Jupyter notebook) that illustrates how to use it in an executable manner."@en ;        
+    sh:name "has executable notebook"@en ;
+    sh:nodeKind sh:IRI ;
+    .
+
+sd:SoftwareApplication-hasInput
+    a sh:PropertyShape ;
+    sh:path sd:hasInput ;
+    sh:class sd:DatasetSpecification ;
+    sh:description "Property that links a model configuration to the input types expected by it."@en ;
+    sh:name "has input"@en .
+
+sd:SoftwareApplication-hasInstallationInstructions
+    a sh:PropertyShape ;
+    sh:path sd:hasInstallationInstructions ;
+    sh:datatype xsd:string ;
+    sh:description "Instructions required to install this particular piece of software. Installation instructions usually are available in a human-readable manner."@en ;
+    sh:name "has installation instructions"@en .
+
+sd:SoftwareApplication-hasOutput
+    a sh:PropertyShape ;
+    sh:path sd:hasOutput ;
+    sh:class sd:DatasetSpecification ;
+    sh:description "Property that expresses what are the outputs of a model"@en ;
+    sh:name "has output"@en .
+
+sd:SoftwareApplication-hasParameter
+    a sh:PropertyShape ;
+    sh:path sd:hasParameter ;
+    sh:or ([sh:class bio:FormalParameter ]
+           [sh:class sd:DatasetSpecification ]) ;
+    sh:description "Property that indicates the parameters of a model configuration"@en ;
+    sh:name "has parameter"@en ;
+                .
+
+sd:SoftwareApplication-hasUsageNotes
+    a sh:PropertyShape ;
+    sh:path sd:hasUsageNotes ;
+    sh:datatype xsd:string ;
+    sh:description "Property that describes the usage considerations of a particular software. These notes capture the rationale of for that software configuration, along with an explanation for sample inputs, things to consider when running the model with data, etc."@en ;
+    sh:name "has usage notes"@en .                
+
+sd:SoftwareApplication-readme
+    a sh:PropertyShape ;
+    sh:path sd:readme ;
+    sh:nodeKind sh:IRI ;
+    sh:description "URl to the readme file of a software component"@en ;
+    sh:name "readme"@en .
+
+schema:DataFeed
+  a rdfs:Class ;
+  a sh:NodeShape ;
+  rdfs:comment "A single feed providing structured information about one or more entities or topics."^^rdf:HTML ;
+  rdfs:label "Data feed" ;
+  rdfs:subClassOf schema:Dataset ;
+  sh:property schema:Thing-description ,
+              schema:Dataset-distribution ,
+              schema:Dataset-measurementTechnique ,
+              schema:Thing-name ,
+              schema:Dataset-variableMeasured ;
+              
+.   
+
+schema:Dataset-distribution
+  a sh:PropertyShape ;
+  sh:path schema:distribution ;
+  sh:class schema:DataDownload ;
+  sh:description "A downloadable form of this dataset, at a specific location, in a specific format."^^rdf:HTML ;
+  sh:name "distribution" ;
+.
+
+sd:SoftwareApplication-hasFunding
+    a sh:PropertyShape ;
+    sh:path sd:hasFunding ;
+    sh:or (
+      [
+        sh:class schema:Grant ;
+      ]
+      [
+        sh:class sd:FundingInformation ;
+      ]) ;
+    sh:description "Property that links a software project to its funding information"@en ;
+    sh:name "has funding information"@en .
+
+
+schema:Grant
+  a rdfs:Class ;
+  a sh:NodeShape ;
+  schema:isPartOf <http://pending.schema.org> ;
+  schema:source <https://github.com/schemaorg/schemaorg/issues/383> ;
+  schema:source <https://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#FundInfoCollab> ;
+  rdfs:comment """A grant, typically financial or otherwise quantifiable, of resources. Typically a [[funder]] sponsors some [[MonetaryAmount]] to an [[Organization]] or [[Person]],
+    sometimes not necessarily via a dedicated or long-lived [[Project]], resulting in one or more outputs, or [[fundedItem]]s. For financial sponsorship, indicate the [[funder]] of a [[MonetaryGrant]]. For non-financial support, indicate [[sponsor]] of [[Grant]]s of resources (e.g. office space).
+
+Grants support  activities directed towards some agreed collective goals, often but not always organized as [[Project]]s. Long-lived projects are sometimes sponsored by a variety of grants over time, but it is also common for a project to be associated with a single grant.
+
+The amount of a [[Grant]] is represented using [[amount]] as a [[MonetaryAmount]].
+    """^^rdf:HTML ;
+  rdfs:label "Grant" ;
+  rdfs:subClassOf schema:Intangible ;
+  sh:property schema:Grant-fundedItem ;
+  sh:property schema:Grant-sponsor ;
+  sh:property schema:Thing-identifier ;
+  sh:property sd:FundingInformation-fundingGrant ;
+  sh:property sd:FundingInformation-fundingSource ;
+
+.
+
+schema:Thing-identifier
+  a sh:PropertyShape ;
+  sh:path schema:identifier ;
+  sh:description """The identifier property represents any kind of identifier for any kind of [[Thing]], such as ISBNs, GTIN codes, UUIDs etc. Schema.org provides dedicated properties for representing many of these, either as textual strings or as URL (URI) links. See [background notes](/docs/datamodel.html#identifierBg) for more details.
+        """^^rdf:HTML ;
+  sh:name "identifier" ;
+  sh:or (
+      [
+        sh:class schema:PropertyValue ;
+      ]
+      [
+        sh:nodeKind sh:IRI ;
+      ]
+      [
+        sh:datatype xsd:string ;
+      ]
+    ) ;
+.
+
+sd:FundingInformation-fundingGrant
+    a sh:PropertyShape ;
+    sh:path sd:fundingGrant ;
+    sh:datatype xsd:string ;
+    sh:description "Grant number used for funding"@en ;
+    sh:name "funding grant"@en .
+
+sd:FundingInformation-fundingSource
+    a sh:PropertyShape ;
+    sh:path sd:fundingSource ;
+    sh:class schema:Organization ;
+    sh:description "Link to the organization funding a software component"@en ;
+    sh:name "funding source"@en .
+
+sd:FundingInformation
+    a sh:NodeShape, rdfs:Class ;
+    sh:description "A class to represent the funding information of a software project"@en ;
+    sh:name "Funding Information"@en ; 
+    sh:property schema:Thing-identifier,
+                sd:FundingInformation-fundingGrant,
+                sd:FundingInformation-fundingSource ;
+    .
+
+sd:DatasetSpecification
+    a sh:NodeShape, rdfs:Class ;
+    rdfs:subClassOf <http://purl.org/linked-data/cube#DataStructureDefinition> ;
+    sh:description "Class designed to describe a type of input or output used or produced by a model. For example, Topoflow has several inputs. One of them is a text file with precipitation values. The representation of this input is an instance of a dataset specification."@en ;
+    sh:name "Dataset Specification"@en ;
+    sh:property schema:Thing-description ,
+                schema:CreativeWork-encodingFormat,
+                schema:Thing-name,
+                sd:DatasetSpecification-hasDimensionality,
+                sd:DatasetSpecification-hasFormat ;
+                sh:property schema:PropertyValueSpecification-defaultValue, 
+                schema:PropertyValueSpecification-valueRequired
+    .
+
+ren:CommandInput
+    a sh:NodeShape, rdfs:Class ;
+    sh:description "Input of a command line run"@en ;
+    sh:name "command input"@en ;
+    sh:property schema:Thing-description ,
+                schema:CreativeWork-encodingFormat,
+                schema:Thing-name,
+                sd:DatasetSpecification-hasDimensionality,
+                sd:DatasetSpecification-hasFormat ;
+    .
+
+bio:FormalParameter
+    a sh:NodeShape, rdfs:Class ;
+    rdfs:subClassOf <http://purl.org/linked-data/cube#DataStructureDefinition> ;
+    sh:description "A FormalParameter is an identified variable used to stand for the actual value(s) that are consumed/produced by a set of steps"@en ;
+    sh:name "Formal Parameter"@en ;
+    sh:property schema:Thing-description ,
+                schema:CreativeWork-encodingFormat,
+                schema:Thing-name,
+                sd:DatasetSpecification-hasDimensionality,
+                sd:DatasetSpecification-hasFormat ,
+                schema:PropertyValueSpecification-defaultValue,
+                schema:PropertyValueSpecification-valueRequired
+    .
+
+schema:CreativeWork-encodingFormat
+  a sh:PropertyShape ;
+  sh:path schema:encodingFormat ;
+  sh:description """Media type typically expressed using a MIME format (see [IANA site](http://www.iana.org/assignments/media-types/media-types.xhtml) and [MDN reference](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types)) e.g. application/zip for a SoftwareApplication binary, audio/mpeg for .mp3 etc.).
+
+In cases where a [[CreativeWork]] has several media type representations, [[encoding]] can be used to indicate each [[MediaObject]] alongside particular [[encodingFormat]] information.
+
+Unregistered or niche encoding and file formats can be indicated instead via the most appropriate URL, e.g. defining Web page or a Wikipedia/Wikidata entry."""^^rdf:HTML ;
+  sh:name "encodingFormat" ;
+  sh:or (
+      [
+        sh:nodeKind sh:IRI ;
+      ]
+    ) ;
+.
+
+sd:DatasetSpecification-hasDimensionality
+    a sh:PropertyShape ;
+    sh:path sd:hasDimensionality ;
+    sh:datatype xsd:integer ;
+    sh:description "Property to indicate dimensionality of the input or output of a dataset specification"@en ;
+    sh:name "has dimensionality"@en .
+
+
+sd:DatasetSpecification-hasFormat
+    a sh:PropertyShape ;
+    sh:path sd:hasFormat ;
+    sh:datatype xsd:string ;
+    sh:description "Format followed by a file. For example, txt, nc, etc."@en ;
+    sh:name "has format"@en .
+
+schema:PropertyValueSpecification-defaultValue
+  a sh:PropertyShape ;
+  sh:path schema:defaultValue ;
+  sh:description "The default value of the input.  For properties that expect a literal, the default is a literal value, for properties that expect an object, it's an ID reference to one of the current values."^^rdf:HTML ;
+  sh:name "defaultValue" ;
+  sh:or (
+      [
+        sh:class schema:Thing ;
+      ]
+      [
+        sh:datatype xsd:string ;
+      ]
+    ) ;
+.
+
+schema:PropertyValueSpecification-valueRequired
+  a sh:PropertyShape ;
+  sh:path schema:valueRequired ;
+  sh:datatype xsd:boolean ;
+  sh:description "Whether the property must be filled in to complete the action.  Default is false."^^rdf:HTML ;
+  sh:name "valueRequired" ;
+.
+
+ren:ParameterBase-prefix
+    a sh:PropertyShape ;
+    sh:path ren:prefix ;
+    sh:datatype xsd:string ;
+    sh:description "Specifies that this argument is supplied to the command with a prefix as in <prefix>=<path>"@en ;
+    sh:name "prefix"@en ;
+    .
+
+sd:SoftwareConfiguration-hasSoftwareImage
+    a sh:PropertyShape ;
+    sh:path sd:hasSoftwareImage ;
+    sh:class sd:SoftwareImage, spe:ContainerImage ;
+    rdfs:comment "Function to link a function with its corresponding container"@en ;
+    rdfs:label "has software image"@en .
+
+sd:SoftwareImage    
+    a sh:NodeShape, owl:Class ;
+    rdfs:subClassOf sd:Software ;
+    sh:description "An image that virtualizes the functionality of a given software. For example, a Docker container."@en ;
+    sh:name "Software Image"@en ;
+    sh:property schema:Thing-name ,
+                schema:Thing-description ,
+                schema:SoftwareApplication-softwareVersion ,
+                sd:SoftwareImage-availableInRegistry ;
+    .
+
+spe:ContainerImage 
+    a sh:NodeShape, rdfs:Class ;
+    rdfs:subClassOf owl:Thing ;
+    sh:description "This Container profile specification presents a representation of a Container such as Docker or Singularity that is used in scientific compute." ;
+    sh:name "Container Image"@en ;
+    sh:property schema:Thing-name ,
+                schema:Thing-description ,
+                schema:SoftwareApplication-softwareVersion ,
+                sd:SoftwareImage-availableInRegistry ;
+    .
+
+sd:SoftwareImage-availableInRegistry
+    a sh:PropertyShape ;
+    sh:nodeKind sh:IRI ;
+    sh:path sd:availableInRegistry ;
+    sh:description "Property that indicates in which registry the software image being described can be found. For example, https://hub.docker.com"@en ;
+    sh:name "available in registry"@en 
+    .
+
+schema:Dataset-measurementTechnique
+  a sh:PropertyShape ;
+  sh:path schema:measurementTechnique ;
+  sh:description """A technique or technology used in a [[Dataset]] (or [[DataDownload]], [[DataCatalog]]),
+corresponding to the method used for measuring the corresponding variable(s) (described using [[variableMeasured]]). This is oriented towards scientific and scholarly dataset publication but may have broader applicability; it is not intended as a full representation of measurement, but rather as a high level summary for dataset discovery.
+
+For example, if [[variableMeasured]] is: molecule concentration, [[measurementTechnique]] could be: \"mass spectrometry\" or \"nmr spectroscopy\" or \"colorimetry\" or \"immunofluorescence\".
+
+If the [[variableMeasured]] is \"depression rating\", the [[measurementTechnique]] could be \"Zung Scale\" or \"HAM-D\" or \"Beck Depression Inventory\".
+
+If there are several [[variableMeasured]] properties recorded for some given data object, use a [[PropertyValue]] for each [[variableMeasured]] and attach the corresponding [[measurementTechnique]].
+      """^^rdf:HTML ;
+  sh:name "measurementTechnique" ;
+  sh:or (
+      [
+        sh:nodeKind sh:IRI ;
+      ]
+      [
+        sh:datatype xsd:string ;
+      ]
+    ) ;
+.
+
+schema:Dataset-variableMeasured
+  a sh:PropertyShape ;
+  sh:path schema:variableMeasured ;
+  sh:description "The variableMeasured property can indicate (repeated as necessary) the  variables that are measured in some dataset, either described as text or as pairs of identifier and description using PropertyValue."^^rdf:HTML ;
+  sh:name "variableMeasured" ;
+  sh:or (
+      [
+        sh:class schema:PropertyValue ;
+      ]
+      [
+        sh:datatype xsd:string ;
+      ]
+    ) ;
+.
+
+schema:Organization-legalName
+  a sh:PropertyShape ;
+  sh:path schema:legalName ;
+  sh:datatype xsd:string ;
+  sh:description "The official name of the organization, e.g. the registered company name."^^rdf:HTML ;
+  sh:name "legalName" ;
+.
+
+schema:Grant-fundedItem
+  a sh:PropertyShape ;
+  sh:path schema:fundedItem ;
+  sh:class schema:Thing ;
+  sh:description "Indicates an item funded or sponsored through a [[Grant]]."^^rdf:HTML ;
+  sh:name "fundedItem" ;
+.
+
+schema:Grant-sponsor
+  a sh:PropertyShape ;
+  sh:path schema:sponsor ;
+  sh:description "A person or organization that supports a thing through a pledge, promise, or financial contribution. e.g. a sponsor of a Medical Study or a corporate sponsor of an event."^^rdf:HTML ;
+  sh:name "sponsor" ;
+  sh:or (
+      [
+        sh:class schema:Organization ;
+      ]
+      [
+        sh:class schema:Person ;
+      ]
+    ) ;
+.

@@ -1,0 +1,46 @@
+{
+    "@context": [
+        "https://doi.org/10.5063/schema/codemeta-2.0",
+        "https://w3id.org/software-iodata",
+        "https://raw.githubusercontent.com/jantman/repostatus.org/master/badges/latest/ontology.jsonld",
+        "https://schema.org",
+        "https://w3id.org/software-types"
+    ],
+    "@type": "SoftwareSourceCode",
+    "author": {
+        "@type": "Person",
+        "affiliation": {
+            "@type": "Organization",
+            "name": "KNAW Humanities Cluster & CLST, Radboud University"
+        },
+        "familyName": "van Gompel",
+        "givenName": "Maarten",
+        "url": "https://proycon.anaproy.nl"
+    },
+    "codeRepository": "https://github.com/proycon/codemetapy",
+    "dateCreated": "2018-04-16T12:06:45Z",
+    "dateModified": "2022-11-21T17:03:27Z",
+    "description": "A Python package for generating and working with codemeta",
+    "issueTracker": "https://github.com/proycon/codemetapy/issues",
+    "keywords": [
+        "codemeta",
+        "linked-data",
+        "metadata",
+        "metadata-extractor",
+        "schema-org",
+        "scientific"
+    ],
+    "license": "http://spdx.org/licenses/GPL-3.0-only",
+    "maintainer": {
+        "@type": "Person",
+        "affiliation": {
+            "@type": "Organization",
+            "name": "KNAW Humanities Cluster & CLST, Radboud University"
+        },
+        "familyName": "van Gompel",
+        "givenName": "Maarten",
+        "url": "https://proycon.anaproy.nl"
+    },
+    "name": "codemetapy",
+    "url": "https://codemeta.github.io/"
+}

@@ -1,0 +1,67 @@
+@prefix : <https://epfl.ch/example/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix sd: <https://w3id.org/okn/o/sd#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:SDSC a schema:Organization ;
+    schema:legalName "Swiss Data Science Center"^^xsd:integer .
+
+:SubmissionWithManyMistakes  a schema:SoftwareApplication ;
+    schema:applicationCategory "Category A"^^xsd:integer ;
+    schema:citation "A Citation"^^xsd:integer ;
+    schema:codeRepository "https://github.com/SDSC-ORD/gimie" ;
+    schema:conditionsOfAccess "Ask for access"^^xsd:integer ;
+    schema:dateCreated "2022-12-01"^^xsd:integer ;
+    schema:datePublished "2023-01-01"^^xsd:integer ;
+    schema:description "Some description of Gimie"^^xsd:integer ;
+    schema:downloadUrl "https://github.com/SDSC-ORD/gimie/find/main" ;
+    schema:featureList "Features or modules provided by this application"^^xsd:integer ;
+    schema:image "https://i.natgeofe.com/n/c9107b46-78b1-4394-988d-53927646c72b/1095_3x2.jpg" ;
+    schema:isAccessibleForFree "true"^^xsd:integer ;
+    schema:isBasedOn "https://github.com/proycon/codemetapy" ;
+    schema:license "https://spdx.org/licenses/Apache-2.0.html" ;
+    schema:maintainer [a schema:Person ;
+                        schema:affiliation :SDSC ;
+                        schema:email "robin.franken@epfl.ch"^^xsd:integer ;
+                        schema:familyName "Franken"^^xsd:integer ;
+                        schema:givenName "Robin"^^xsd:integer ;
+                        ] ;
+    schema:memoryRequirements "Yes, lots of memory"^^xsd:integer ;
+    schema:name "Gimie"^^xsd:integer ;
+    schema:operatingSystem "Yes, we support operating systems"^^xsd:integer ;
+    schema:producer :SDSC ;
+    schema:programmingLanguage [a schema:ComputerLanguage ;
+                                schema:name "Python"^^xsd:integer] ;
+    schema:softwareRequirements "probably there are requirements"^^xsd:integer ;
+    schema:softwareVersion "2.2.2"^^xsd:integer ;
+    schema:supportingData [a schema:DataFeed ;
+                           schema:description "some datafeed"^^xsd:integer ;
+                           schema:distribution [a schema:DataDownload ;
+                           ] ;
+                           schema:measurementTechnique "some measurement technique"^^xsd:integer ;
+                           schema:name "My dataset"^^xsd:integer ;
+                           schema:variableMeasured "some variable"^^xsd:integer ;
+                            ];
+    schema:url "https://github.com/SDSC-ORD/gimie" ;
+    sd:hasAcknowledgements "We acknowledge everyone, especially codeMetaPy"^^xsd:integer;
+    sd:hasDocumentation "https://pypi.org/project/gimie/" ;
+    sd:hasDownloadInstructions "download it from github"^^xsd:integer ;
+    sd:hasExecutableInstructions "execute it in CL or as python package"^^xsd:integer ;
+    sd:hasExecutableNotebook "https://pypi.org/project/gimie/" ;
+    sd:hasInput [a sd:DatasetSpecification ;
+                schema:name "the input"^^xsd:integer    ] ;
+    sd:hasInstallationInstructions "install using pip"^^xsd:integer ;
+    sd:hasOutput [a sd:DatasetSpecification ;
+                 schema:name "the output"^^xsd:integer   ] ;
+    sd:hasParameter [a sd:DatasetSpecification ;
+                    schema:name "the parameter"^^xsd:integer] ;
+    sd:hasUsageNotes "consider using this software carefully"^^xsd:integer;
+    sd:readme "https://github.com/SDSC-ORD/gimie/blob/main/README.md";
+    sd:hasFunding [a sd:FundingInformation ;
+                  schema:name "Some funding information"^^xsd:integer ;]
+    .
