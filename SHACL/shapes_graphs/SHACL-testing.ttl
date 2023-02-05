@@ -73,44 +73,4 @@ constraints:AdministrativeGender a sh:NodeShape ;
             sh:path :hasRecordDateTime ] ;
     sh:targetClass :AdministrativeGender .
 
-constraints:AdverseEvent a sh:NodeShape ;
-    sh:closed false ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class :AdverseEvent_outcome ;
-            sh:maxCount 1 ;
-            sh:minCount 0 ;
-            sh:path :hasOutcome ],
-        [ sh:class :SubjectPseudoIdentifier ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:path :hasSubjectPseudoIdentifier ],
-        [ sh:maxCount 1 ;
-            sh:minCount 0 ;
-            sh:or ( [ sh:class :Terminology ] [ sh:class :Code ] ) ;
-            sh:path :hasSeverityCode ],
-        [ sh:datatype xsd:string ;
-            sh:maxCount 1 ;
-            sh:minCount 0 ;
-            sh:path :hasIntervention ],
-        [ sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:or ( [ sh:class :Terminology ] [ sh:class :Code ] ) ;
-            sh:path :hasCode ],
-        [ sh:class :AdministrativeCase ;
-            sh:maxCount 1 ;
-            sh:minCount 0 ;
-            sh:path :hasAdministrativeCase ],
-        [ sh:class :AdverseEvent_consequences ;
-            sh:maxCount 1 ;
-            sh:minCount 0 ;
-            sh:path :hasConsequences ],
-        [ sh:datatype xsd:dateTime ;
-            sh:maxCount 1 ;
-            sh:minCount 0 ;
-            sh:path :hasOnsetDateTime ],
-        [ sh:class :DataProviderInstitute ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:path :hasDataProviderInstitute ] ;
-    sh:targetClass :AdverseEvent .
 

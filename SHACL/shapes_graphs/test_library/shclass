@@ -1,0 +1,5 @@
+constraints:AdministrativeCase a sh:NodeShape ;
+    sh:property [ sh:class :SubjectPseudoIdentifier ;
+            sh:path :hasCode ] ;
+    sh:message "class" ;
+    sh:targetClass :AdministrativeCase .

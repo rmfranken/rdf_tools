@@ -1,0 +1,5 @@
+constraints:AdministrativeCase a sh:NodeShape ;
+    sh:property [ sh:datatype xsd:dateTime ;
+            sh:path :hasAdmissionDateTime ] ;
+    sh:message "datatype" ;
+    sh:targetClass :AdministrativeCase .

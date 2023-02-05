@@ -1,0 +1,5 @@
+constraints:AdministrativeCase a sh:NodeShape ;
+    sh:property [ sh:minCount 1 ;
+            sh:path :hasAdmissionDateTime ] ;
+    sh:message "mincount" ;
+    sh:targetClass :AdministrativeCase .

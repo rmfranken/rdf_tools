@@ -1,0 +1,7 @@
+constraints:AdverseEvent_consequences a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:in ( :PermanentDamageOrDisability :LifeThreatening :HospitalisationOrProlongation :NoneOfTheConsequencesMentioned :CongenitalAbnormality :TemporarilySeriousImpactMedicallyImportant :Death ) ;
+            sh:path [ sh:path :hasCode ] ] ;
+    sh:targetClass :AdverseEvent_consequences ;
+    sh:message "in".

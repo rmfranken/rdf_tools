@@ -1,0 +1,6 @@
+
+constraints:AdministrativeCase a sh:NodeShape ;
+    sh:property [ sh:or ( [sh:datatype xsd:integer ] [sh:datatype xsd:string ]
+            sh:path :hasCode ] ;
+    sh:message "ordatatype" ;
+    sh:targetClass :AdministrativeCase .

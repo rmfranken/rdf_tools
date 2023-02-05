@@ -1,0 +1,6 @@
+
+constraints:AdministrativeCase a sh:NodeShape ;
+    sh:property [ sh:or ( [ sh:class snomed:703117000 ] [ sh:class snomed:74964007 ]
+            sh:path :hasCode ] ;
+    sh:message "orclass" ;
+    sh:targetClass :AdministrativeCase .

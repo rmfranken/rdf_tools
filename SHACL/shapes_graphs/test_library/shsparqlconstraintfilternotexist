@@ -1,0 +1,11 @@
+constraints:Allergy a sh:NodeShape ;
+sh:sparql [ a sh:SPARQLConstraint ;
+            sh:message "No subclasses of the specified codes are allowed" ;
+            sh:select """
+                                        SELECT ?this (<https://biomedit.ch/rdf/sphn-ontology/sphn#hasSeverityCode> as ?path) (?class as ?value)
+                                        WHERE {
+                                        ?this <https://biomedit.ch/rdf/sphn-ontology/sphn#hasSeverityCode>/<http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?class .
+FILTER NOT EXISTS {<http://snomed.info/id/723505004> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+}""" ] ;
+sh:message "sparql constraint filter not exists 1" ;
+sh:targetClass :Allergy .
