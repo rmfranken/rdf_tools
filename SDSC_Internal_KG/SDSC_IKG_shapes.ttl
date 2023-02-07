@@ -44,7 +44,6 @@ schema:EducationalOccupationalCredential
   sh:property schema:EducationalOccupationalCredential-educationalLevel ;
 .
 
-
 schema:EducationalOccupationalCredential-credentialCategory
   a sh:PropertyShape ;
   sh:path schema:credentialCategory ;
@@ -62,6 +61,7 @@ schema:EducationalOccupationalCredential-credentialCategory
       ]
     ) ;
 .
+
 schema:EducationalOccupationalCredential-educationalLevel
   a sh:PropertyShape ;
   sh:path schema:educationalLevel ;
@@ -79,7 +79,6 @@ schema:EducationalOccupationalCredential-educationalLevel
       ]
     ) ;
 .
-
 
 schema:Organization
   a rdfs:Class ;
@@ -104,6 +103,14 @@ schema:Organization-member
         sh:class schema:Person ;
       ]
     ) ;
+.
+
+schema:Organization-legalName
+  a sh:PropertyShape ;
+  sh:path schema:legalName ;
+  sh:datatype xsd:string ;
+  sh:description "The official name of the organization, e.g. the registered company name."^^rdf:HTML ;
+  sh:name "legalName" ;
 .
 
 schema:ComputerLanguage
@@ -137,7 +144,6 @@ schema:Language
   rdfs:subClassOf schema:Intangible ;
 .
 
-
 schema:CollegeOrUniversity
   a rdfs:Class ;
   a sh:NodeShape ;
@@ -145,7 +151,6 @@ schema:CollegeOrUniversity
   rdfs:label "College or university" ;
   rdfs:subClassOf schema:EducationalOrganization ;
 .
-
 
 schema:JobPosting
   a rdfs:Class ;
@@ -221,7 +226,6 @@ schema:JobPosting-title
   sh:name "title" ;
 .
 
-
 schema:Invoice-customer
   a sh:PropertyShape ;
   sh:path schema:customer ;
@@ -281,11 +285,17 @@ schema:Person-affiliation
 schema:Person-alumniOf
   a sh:PropertyShape ;
   sh:path schema:alumniOf ;
-  sh:class schema:Organization ;
   sh:description "An organization that the person is an alumni of."^^rdf:HTML ;
   sh:name "alumniOf" ;
+  sh:or (
+      [
+        sh:class schema:EducationalOrganization ;
+      ]
+      [
+        sh:class schema:Organization ;
+      ]
+    ) ;
 .
-
 
 schema:Person-email
   a sh:PropertyShape ;
@@ -350,4 +360,12 @@ schema:Person-memberOf
         sh:class schema:ProgramMembership ;
       ]
     ) ;
+.
+
+schema:Person-birthDate
+  a sh:PropertyShape ;
+  sh:path schema:birthDate ;
+  sh:datatype xsd:date ;
+  sh:description "Date of birth."^^rdf:HTML ;
+  sh:name "birthDate" ;
 .
