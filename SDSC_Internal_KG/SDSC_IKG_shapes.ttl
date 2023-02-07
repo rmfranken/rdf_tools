@@ -20,6 +20,7 @@ schema:Person
   rdfs:subClassOf schema:Thing ;
   owl:equivalentClass <http://xmlns.com/foaf/0.1/Person> ;
   sh:property schema:Person-affiliation ;
+  sh:property schema:Person-alumniOf;
   sh:property schema:Person-birthDate ;
   sh:property schema:Person-email ;
   sh:property schema:Person-familyName ;
@@ -27,7 +28,8 @@ schema:Person
   sh:property schema:Person-jobTitle ;
   sh:property schema:Person-nationality ;
   sh:property schema:Person-memberOf ;
-  
+  sh:property schema:Person-knowsLanguage;
+  sh:property schema:Person-knowsAbout;
 .
 
 schema:EducationalOccupationalCredential
@@ -87,6 +89,7 @@ schema:Organization
   rdfs:subClassOf schema:Thing ;
   sh:property schema:Organization-legalName ;
   sh:property schema:Organization-member ;
+  sh:datatype xsd:string ;
 .
 
 schema:Organization-member
@@ -133,6 +136,7 @@ schema:Language
   rdfs:comment "Natural languages such as Spanish, Tamil, Hindi, English, etc. Formal language code tags expressed in [BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) can be used via the [[alternateName]] property. The Language type previously also covered programming languages such as Scheme and Lisp, which are now best represented using [[ComputerLanguage]]."^^rdf:HTML ;
   rdfs:label "Language" ;
   rdfs:subClassOf schema:Intangible ;
+  sh:datatype xsd:string ;
 .
 
 
@@ -276,6 +280,15 @@ schema:Person-affiliation
   sh:name "affiliation" ;
 .
 
+schema:Person-alumniOf
+  a sh:PropertyShape ;
+  sh:path schema:alumniOf ;
+  sh:class schema:Organization ;
+  sh:description "An organization that the person is an alumni of."^^rdf:HTML ;
+  sh:name "alumniOf" ;
+.
+
+
 schema:Person-email
   a sh:PropertyShape ;
   sh:path schema:email ;
@@ -319,8 +332,11 @@ schema:Person-nationality
   a sh:PropertyShape ;
   sh:path schema:nationality ;
   sh:class schema:Country ;
+  sh:datatype xsd:string ;
   sh:description "Nationality of the person."^^rdf:HTML ;
   sh:name "nationality" ;
+
+
 .
 
 schema:Person-memberOf
