@@ -1,6 +1,5 @@
 from pyshacl import validate
 from datetime import datetime
-import os.path
 
 date_time = (datetime.now().strftime(r"%Y-%M-%d_%H%M%S"))
 
