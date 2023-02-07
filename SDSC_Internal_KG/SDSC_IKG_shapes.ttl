@@ -89,7 +89,6 @@ schema:Organization
   rdfs:subClassOf schema:Thing ;
   sh:property schema:Organization-legalName ;
   sh:property schema:Organization-member ;
-  sh:datatype xsd:string ;
 .
 
 schema:Organization-member
@@ -136,7 +135,6 @@ schema:Language
   rdfs:comment "Natural languages such as Spanish, Tamil, Hindi, English, etc. Formal language code tags expressed in [BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) can be used via the [[alternateName]] property. The Language type previously also covered programming languages such as Scheme and Lisp, which are now best represented using [[ComputerLanguage]]."^^rdf:HTML ;
   rdfs:label "Language" ;
   rdfs:subClassOf schema:Intangible ;
-  sh:datatype xsd:string ;
 .
 
 
