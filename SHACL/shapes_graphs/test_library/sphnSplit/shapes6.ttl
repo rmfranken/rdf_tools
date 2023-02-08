@@ -1,0 +1,313 @@
+@prefix : <https://biomedit.ch/rdf/sphn-ontology/sphn#> .
+@prefix chop: <https://biomedit.ch/rdf/sphn-resource/chop/> .
+@prefix constraints: <https://biomedit.ch/rdf/sphn-ontology-constraints/sphn#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix icd-10-gm: <https://biomedit.ch/rdf/sphn-resource/icd-10-gm/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix snomed: <http://snomed.info/id/> .
+@prefix sphn-atc: <https://biomedit.ch/rdf/sphn-resource/atc/> .
+@prefix sphn-loinc: <https://biomedit.ch/rdf/sphn-resource/loinc/> .
+@prefix ucum: <https://biomedit.ch/rdf/sphn-resource/ucum/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+constraints:DrugAdministrationEvent a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class snomed:74964007 ] [ sh:class snomed:182846007 ] [ sh:class snomed:395007004 ] [ sh:class snomed:182844005 ] [ sh:class snomed:395009001 ] [ sh:class snomed:419620001 ] [ sh:class snomed:399307001 ] [ sh:class snomed:31438003 ] [ sh:class snomed:441308009 ] [ sh:class snomed:182872003 ] [ sh:class snomed:182845006 ] ) ;
+            sh:path :hasReasonToStopCode ],
+        [ sh:class :Drug ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasDrug ],
+        [ sh:class :AdministrativeCase ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasAdministrativeCase ],
+        [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasStartDateTime ],
+        [ sh:class :SubjectPseudoIdentifier ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasSubjectPseudoIdentifier ],
+        [ sh:class :PharmaceuticalDoseForm ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasAdministrableDoseForm ],
+        [ sh:class :TimePattern ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasTimePattern ],
+        [ sh:class :Quantity ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasDuration ],
+        [ sh:class snomed:284009009 ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasAdministrationRouteCode ],
+        [ sh:class :Quantity ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasDrugQuantity ],
+        [ sh:class :DataProviderInstitute ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasDataProviderInstitute ],
+        [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasEndDateTime ] ;
+    sh:sparql [ a sh:SPARQLConstraint ;
+            sh:message "No subclasses of the specified codes are allowed" ;
+            sh:select """
+                                        SELECT ?this (<https://biomedit.ch/rdf/sphn-ontology/sphn#hasReasonToStopCode> as ?path) (?class as ?value)
+                                        WHERE {
+                                        ?this <https://biomedit.ch/rdf/sphn-ontology/sphn#hasReasonToStopCode>/<http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?class .
+                                        FILTER (?class NOT IN (<http://snomed.info/id/74964007>,<http://snomed.info/id/182846007>,<http://snomed.info/id/395007004>,<http://snomed.info/id/182844005>,<http://snomed.info/id/395009001>,<http://snomed.info/id/419620001>,<http://snomed.info/id/399307001>,<http://snomed.info/id/31438003>,<http://snomed.info/id/441308009>,<http://snomed.info/id/182872003>,<http://snomed.info/id/182845006>) ) .
+FILTER NOT EXISTS {<http://snomed.info/id/74964007> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<http://snomed.info/id/182846007> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<http://snomed.info/id/395007004> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<http://snomed.info/id/182844005> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<http://snomed.info/id/395009001> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<http://snomed.info/id/419620001> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<http://snomed.info/id/399307001> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<http://snomed.info/id/31438003> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<http://snomed.info/id/441308009> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<http://snomed.info/id/182872003> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<http://snomed.info/id/182845006> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+}""" ] ;
+    sh:targetClass :DrugAdministrationEvent .
+
+constraints:DrugPrescription a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class :Quantity ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasFrequency ],
+        [ sh:class :SubjectPseudoIdentifier ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasSubjectPseudoIdentifier ],
+        [ sh:class :PharmaceuticalDoseForm ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasAdministrableDoseForm ],
+        [ sh:class :DataProviderInstitute ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasDataProviderInstitute ],
+        [ sh:class :Intent ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasIntent ],
+        [ sh:class :AdministrativeCase ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasAdministrativeCase ],
+        [ sh:class :TimePattern ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasTimePattern ],
+        [ sh:class snomed:284009009 ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasAdministrationRouteCode ],
+        [ sh:class :Quantity ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasDrugQuantity ],
+        [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasFirstAdministrationDateTime ],
+        [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasLastAdministrationDateTime ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class :FOPHDiagnosis ] [ sh:class :DrugPrescription_indicationToStart ] ) ;
+            sh:path :hasIndicationToStart ],
+        [ sh:class :Drug ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasDrug ] ;
+    sh:targetClass :DrugPrescription .
+
+constraints:DrugPrescription_indicationToStart a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:in ( :Neoadjuvant :Adjuvant :Other :Unknown ) ;
+            sh:path [ sh:inversePath rdf:type ] ] ;
+    sh:targetClass :DrugPrescription_indicationToStart .
+
+constraints:FOPHDiagnosis a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:dateTime ;
+            sh:path :hasDateTime ],
+        [ sh:class :SubjectPseudoIdentifier ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasSubjectPseudoIdentifier ],
+        [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasRecordDateTime ],
+        [ sh:class :DataProviderInstitute ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasDataProviderInstitute ],
+        [ sh:class :Age ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasSubjectAge ],
+        [ sh:class :AdministrativeCase ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasAdministrativeCase ],
+        [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasCodingDateTime ],
+        [ sh:class :FOPHDiagnosis_rank ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasRank ],
+        [ sh:class icd-10-gm:ICD-10-GM ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasCode ] ;
+    sh:targetClass :FOPHDiagnosis .
+
+constraints:FOPHDiagnosis_rank a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:in ( :Secondary :Principal :Complementary ) ;
+            sh:path [ sh:inversePath rdf:type ] ] ;
+    sh:targetClass :FOPHDiagnosis_rank .
+
+constraints:FOPHProcedure a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class chop:CHOP ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasCode ],
+        [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasCodingDateTime ],
+        [ sh:class :Intent ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasIntent ],
+        [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasStartDateTime ],
+        [ sh:datatype xsd:dateTime ;
+            sh:path :hasDateTime ],
+        [ sh:class :DataProviderInstitute ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasDataProviderInstitute ],
+        [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasEndDateTime ],
+        [ sh:class :FOPHProcedure_rank ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasRank ],
+        [ sh:class :AdministrativeCase ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasAdministrativeCase ],
+        [ sh:class :BodySite ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasBodySite ],
+        [ sh:class :SubjectPseudoIdentifier ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasSubjectPseudoIdentifier ] ;
+    sh:targetClass :FOPHProcedure .
+
+constraints:FOPHProcedure_rank a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:in ( :Principal :Supplementary ) ;
+            sh:path [ sh:inversePath rdf:type ] ] ;
+    sh:targetClass :FOPHProcedure_rank .
+
+constraints:GestationalAgeAtBirth a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class :SubjectPseudoIdentifier ;
+            sh:minCount 1 ;
+            sh:path :hasSubjectPseudoIdentifier ],
+        [ sh:class :AdministrativeCase ;
+            sh:minCount 1 ;
+            sh:path :hasAdministrativeCase ],
+        [ sh:in ( ucum:d ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path ( :hasQuantity :hasUnit :hasCode ) ],
+        [ sh:class :DataProviderInstitute ;
+            sh:minCount 1 ;
+            sh:path :hasDataProviderInstitute ] ;
+    sh:targetClass :GestationalAgeAtBirth .
+
+constraints:HealthcareEncounter a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasStartDateTime ],
+        [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasEndDateTime ],
+        [ sh:class :Location ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasCurrentLocation ],
+        [ sh:class :DataProviderInstitute ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasDataProviderInstitute ],
+        [ sh:class :AdministrativeCase ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasAdministrativeCase ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasIdentifier ],
+        [ sh:class :TherapeuticArea ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasTherapeuticArea ],
+        [ sh:class :Location ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasOriginLocation ],
+        [ sh:class :Location ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasTargetLocation ],
+        [ sh:class :SubjectPseudoIdentifier ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasSubjectPseudoIdentifier ] ;
+    sh:targetClass :HealthcareEncounter .

@@ -1,0 +1,380 @@
+@prefix : <https://biomedit.ch/rdf/sphn-ontology/sphn#> .
+@prefix chop: <https://biomedit.ch/rdf/sphn-resource/chop/> .
+@prefix constraints: <https://biomedit.ch/rdf/sphn-ontology-constraints/sphn#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix icd-10-gm: <https://biomedit.ch/rdf/sphn-resource/icd-10-gm/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix snomed: <http://snomed.info/id/> .
+@prefix sphn-atc: <https://biomedit.ch/rdf/sphn-resource/atc/> .
+@prefix sphn-loinc: <https://biomedit.ch/rdf/sphn-resource/loinc/> .
+@prefix ucum: <https://biomedit.ch/rdf/sphn-resource/ucum/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+constraints:DiagnosticRadiologicExamination a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:dateTime ;
+            sh:path :hasDateTime ],
+        [ sh:in ( ucum:Mbq ucum:mCi ucum:Gy ucum:cGy ) ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path ( :hasRadiationQuantity :hasUnit :hasCode ) ],
+        [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasEndDateTime ],
+        [ sh:class :BodySite ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasBodySite ],
+        [ sh:class :DiagnosticRadiologicExamination_method ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasMethod ],
+        [ sh:class :Intent ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasIntent ],
+        [ sh:class :DataProviderInstitute ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasDataProviderInstitute ],
+        [ sh:class :SubjectPseudoIdentifier ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasSubjectPseudoIdentifier ],
+        [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasCodingDateTime ],
+        [ sh:class :AdministrativeCase ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasAdministrativeCase ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:or ( [ sh:class chop:88.97.00 ] [ sh:class chop:87.63 ] [ sh:class chop:87.64.30 ] [ sh:class chop:88.54 ] [ sh:class chop:87.38 ] [ sh:class chop:88.92.14 ] [ sh:class chop:87.77.99 ] [ sh:class chop:92.18.05 ] [ sh:class chop:88.58 ] [ sh:class chop:88.48.00 ] [ sh:class chop:88.91.11 ] [ sh:class chop:88.39.20 ] [ sh:class chop:87.64.10 ] [ sh:class chop:87.54.10 ] [ sh:class chop:88.64 ] [ sh:class chop:87.34 ] [ sh:class chop:88.29 ] [ sh:class chop:87.36 ] [ sh:class chop:87.51 ] [ sh:class chop:88.45 ] [ sh:class chop:88.97.14 ] [ sh:class chop:92.15 ] [ sh:class chop:87.07 ] [ sh:class chop:87.64.00 ] [ sh:class chop:87.04.11 ] [ sh:class chop:88.92.39 ] [ sh:class chop:87.37.00 ] [ sh:class chop:87.89 ] [ sh:class chop:87.24 ] [ sh:class chop:87.31 ] [ sh:class chop:87.59.10 ] [ sh:class chop:88.47 ] [ sh:class chop:87.29 ] [ sh:class chop:88.92.29 ] [ sh:class chop:92.18.02 ] [ sh:class chop:88.98.00 ] [ sh:class chop:88.92.22 ] [ sh:class chop:87.82 ] [ sh:class chop:88.97.16 ] [ sh:class chop:92.18.04 ] [ sh:class chop:87.72 ] [ sh:class chop:87.41.99 ] [ sh:class chop:87.02 ] [ sh:class chop:92.05.09 ] [ sh:class chop:00.25 ] [ sh:class chop:88.42.11 ] [ sh:class chop:87.41.14 ] [ sh:class chop:87.65 ] [ sh:class chop:88.01.20 ] [ sh:class chop:88.94.99 ] [ sh:class chop:92.04 ] [ sh:class chop:87.41.12 ] [ sh:class chop:88.67 ] [ sh:class chop:87.54.00 ] [ sh:class chop:92.19.08 ] [ sh:class chop:88.49.99 ] [ sh:class chop:87.06 ] [ sh:class chop:87.81 ] [ sh:class chop:88.92.12 ] [ sh:class chop:88.12 ] [ sh:class chop:88.42.00 ] [ sh:class chop:88.56 ] [ sh:class chop:88.98.99 ] [ sh:class chop:87.41.16 ] [ sh:class chop:88.57 ] [ sh:class chop:88.97.18 ] [ sh:class chop:88.94.13 ] [ sh:class chop:88.52 ] [ sh:class chop:88.90.10 ] [ sh:class chop:88.60 ] [ sh:class chop:87.33 ] [ sh:class chop:88.09 ] [ sh:class chop:87.61.00 ] [ sh:class chop:88.61.99 ] [ sh:class chop:88.13 ] [ sh:class chop:88.01.10 ] [ sh:class chop:88.97.12 ] [ sh:class chop:88.94.00 ] [ sh:class chop:88.98.10 ] [ sh:class chop:88.91.00 ] [ sh:class chop:88.38.50 ] [ sh:class chop:87.23 ] [ sh:class chop:88.19 ] [ sh:class chop:88.62 ] [ sh:class chop:88.63.00 ] [ sh:class chop:88.38.99 ] [ sh:class chop:88.24 ] [ sh:class chop:88.61.10 ] [ sh:class chop:87.76.99 ] [ sh:class chop:88.01.99 ] [ sh:class chop:87.54.99 ] [ sh:class chop:87.76.10 ] [ sh:class chop:92.19.04 ] [ sh:class chop:87.64.20 ] [ sh:class chop:87.15 ] [ sh:class chop:88.92.31 ] [ sh:class chop:92.05.12 ] [ sh:class chop:92.05.13 ] [ sh:class chop:88.46 ] [ sh:class chop:88.49.11 ] [ sh:class chop:88.33 ] [ sh:class chop:87.14 ] [ sh:class chop:88.34 ] [ sh:class chop:88.42.99 ] [ sh:class chop:87.77.10 ] [ sh:class chop:88.48.99 ] [ sh:class chop:88.41.11 ] [ sh:class chop:87.41.15 ] [ sh:class chop:87.39 ] [ sh:class chop:87.77.00 ] [ sh:class chop:87.41.00 ] [ sh:class chop:87.71 ] [ sh:class chop:92.18.00 ] [ sh:class chop:88.38.22 ] [ sh:class chop:88.38.30 ] [ sh:class chop:88.38.32 ] [ sh:class chop:88.55 ] [ sh:class chop:92.19.06 ] [ sh:class chop:87.85 ] [ sh:class chop:88.16 ] [ sh:class chop:88.38.31 ] [ sh:class chop:88.92.11 ] [ sh:class chop:88.23 ] [ sh:class chop:88.26 ] [ sh:class chop:88.97.11 ] [ sh:class chop:87.83 ] [ sh:class chop:92.13 ] [ sh:class chop:87.21.99 ] [ sh:class chop:92.05.19 ] [ sh:class chop:88.53 ] [ sh:class chop:87.32 ] [ sh:class chop:87.41.11 ] [ sh:class chop:88.92.23 ] [ sh:class chop:92.16 ] [ sh:class chop:88.96 ] [ sh:class chop:87.78 ] [ sh:class chop:88.38.20 ] [ sh:class chop:88.90.30 ] [ sh:class chop:87.53 ] [ sh:class chop:88.25 ] [ sh:class chop:88.31 ] [ sh:class chop:87.52 ] [ sh:class chop:88.49.10 ] [ sh:class chop:87.99 ] [ sh:class chop:88.63.10 ] [ sh:class chop:87.09.10 ] [ sh:class chop:88.92.30 ] [ sh:class chop:88.92.99 ] [ sh:class chop:88.97.19 ] [ sh:class chop:88.37 ] [ sh:class chop:88.63.99 ] [ sh:class chop:92.18.08 ] [ sh:class chop:87.08 ] [ sh:class chop:88.97.99 ] [ sh:class chop:87.13 ] [ sh:class chop:88.94.14 ] [ sh:class chop:92.01 ] [ sh:class chop:87.73 ] [ sh:class chop:88.49.00 ] [ sh:class chop:92.11.00 ] [ sh:class chop:87.61.99 ] [ sh:class chop:88.94.16 ] [ sh:class chop:88.27 ] [ sh:class chop:87.94 ] [ sh:class chop:88.38.51 ] [ sh:class chop:88.66 ] [ sh:class chop:87.21.00 ] [ sh:class chop:87.93 ] [ sh:class chop:88.91.99 ] [ sh:class chop:88.38.21 ] [ sh:class chop:88.97.10 ] [ sh:class chop:92.05.00 ] [ sh:class chop:92.18.03 ] [ sh:class chop:92.19.05 ] [ sh:class chop:88.04 ] [ sh:class chop:88.32 ] [ sh:class chop:87.37.99 ] [ sh:class chop:88.01.00 ] [ sh:class chop:00.22 ] [ sh:class chop:87.01 ] [ sh:class chop:87.66 ] [ sh:class chop:88.39.10 ] [ sh:class chop:92.14 ] [ sh:class chop:87.03 ] [ sh:class chop:00.21 ] [ sh:class chop:87.59.99 ] [ sh:class chop:88.59 ] [ sh:class chop:92.19.03 ] [ sh:class chop:88.42.10 ] [ sh:class chop:88.36 ] [ sh:class chop:88.92.24 ] [ sh:class chop:92.19.01 ] [ sh:class chop:87.76.00 ] [ sh:class chop:88.39.30 ] [ sh:class chop:87.75 ] [ sh:class chop:87.41.19 ] [ sh:class chop:88.39.00 ] [ sh:class chop:88.50 ] [ sh:class chop:87.04.00 ] [ sh:class chop:87.49 ] [ sh:class chop:88.69 ] [ sh:class chop:88.38.40 ] [ sh:class chop:88.94.12 ] [ sh:class chop:88.95 ] [ sh:class chop:92.19.00 ] [ sh:class chop:92.12 ] [ sh:class chop:88.39.99 ] [ sh:class chop:88.02 ] [ sh:class chop:88.11 ] [ sh:class chop:87.64.99 ] [ sh:class chop:87.35 ] [ sh:class chop:88.38.60 ] [ sh:class chop:88.41.21 ] [ sh:class chop:87.79 ] [ sh:class chop:92.18.01 ] [ sh:class chop:88.38.00 ] [ sh:class chop:88.92.00 ] [ sh:class chop:87.84 ] [ sh:class chop:88.92.21 ] [ sh:class chop:88.61.00 ] [ sh:class chop:88.92.33 ] [ sh:class chop:88.68 ] [ sh:class chop:88.65 ] [ sh:class chop:88.44 ] [ sh:class chop:92.11.08 ] [ sh:class chop:88.97.20 ] [ sh:class chop:88.92.13 ] [ sh:class chop:88.94.10 ] [ sh:class chop:87.09.99 ] [ sh:class chop:92.05.11 ] [ sh:class chop:87.21.10 ] [ sh:class chop:87.61.10 ] [ sh:class chop:87.41.10 ] [ sh:class chop:87.12 ] [ sh:class chop:92.09.00 ] [ sh:class chop:88.92.34 ] [ sh:class chop:00.23 ] [ sh:class chop:87.95 ] [ sh:class chop:87.09.00 ] [ sh:class chop:87.18 ] [ sh:class chop:87.59.00 ] [ sh:class chop:87.41.13 ] [ sh:class chop:87.92 ] [ sh:class chop:87.69 ] [ sh:class chop:88.22 ] [ sh:class chop:88.48.10 ] [ sh:class chop:88.92.10 ] [ sh:class chop:92.19.02 ] [ sh:class chop:88.14 ] [ sh:class chop:88.39.21 ] [ sh:class chop:88.03 ] [ sh:class chop:87.05 ] [ sh:class chop:88.92.20 ] [ sh:class chop:88.35 ] [ sh:class chop:92.02 ] [ sh:class chop:88.38.41 ] [ sh:class chop:92.05.14 ] [ sh:class chop:88.94.11 ] [ sh:class chop:88.51 ] [ sh:class chop:88.43 ] [ sh:class chop:87.74 ] [ sh:class chop:87.04.99 ] [ sh:class chop:88.15 ] [ sh:class chop:88.92.32 ] [ sh:class chop:92.05.10 ] [ sh:class chop:88.28 ] [ sh:class chop:87.91 ] [ sh:class chop:92.03 ] [ sh:class chop:92.09.10 ] [ sh:class chop:87.04.10 ] [ sh:class chop:88.92.19 ] [ sh:class chop:00.28 ] [ sh:class chop:87.22 ] [ sh:class chop:88.97.15 ] [ sh:class chop:88.97.17 ] [ sh:class chop:92.09.99 ] [ sh:class chop:87.62 ] [ sh:class chop:88.91.10 ] [ sh:class chop:87.37.10 ] [ sh:class chop:88.40 ] [ sh:class chop:88.21 ] ) ;
+            sh:path :hasCode ],
+        [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasStartDateTime ] ;
+    sh:sparql [ a sh:SPARQLConstraint ;
+            sh:message "No subclasses of the specified codes are allowed" ;
+            sh:select """
+                                        SELECT ?this (<https://biomedit.ch/rdf/sphn-ontology/sphn#hasCode> as ?path) (?class as ?value)
+                                        WHERE {
+                                        ?this <https://biomedit.ch/rdf/sphn-ontology/sphn#hasCode>/<http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?class .
+                                        FILTER (?class NOT IN (<https://biomedit.ch/rdf/sphn-resource/chop/88.97.00>,<https://biomedit.ch/rdf/sphn-resource/chop/87.63>,<https://biomedit.ch/rdf/sphn-resource/chop/87.64.30>,<https://biomedit.ch/rdf/sphn-resource/chop/88.54>,<https://biomedit.ch/rdf/sphn-resource/chop/87.38>,<https://biomedit.ch/rdf/sphn-resource/chop/88.92.14>,<https://biomedit.ch/rdf/sphn-resource/chop/87.77.99>,<https://biomedit.ch/rdf/sphn-resource/chop/92.18.05>,<https://biomedit.ch/rdf/sphn-resource/chop/88.58>,<https://biomedit.ch/rdf/sphn-resource/chop/88.48.00>,<https://biomedit.ch/rdf/sphn-resource/chop/88.91.11>,<https://biomedit.ch/rdf/sphn-resource/chop/88.39.20>,<https://biomedit.ch/rdf/sphn-resource/chop/87.64.10>,<https://biomedit.ch/rdf/sphn-resource/chop/87.54.10>,<https://biomedit.ch/rdf/sphn-resource/chop/88.64>,<https://biomedit.ch/rdf/sphn-resource/chop/87.34>,<https://biomedit.ch/rdf/sphn-resource/chop/88.29>,<https://biomedit.ch/rdf/sphn-resource/chop/87.36>,<https://biomedit.ch/rdf/sphn-resource/chop/87.51>,<https://biomedit.ch/rdf/sphn-resource/chop/88.45>,<https://biomedit.ch/rdf/sphn-resource/chop/88.97.14>,<https://biomedit.ch/rdf/sphn-resource/chop/92.15>,<https://biomedit.ch/rdf/sphn-resource/chop/87.07>,<https://biomedit.ch/rdf/sphn-resource/chop/87.64.00>,<https://biomedit.ch/rdf/sphn-resource/chop/87.04.11>,<https://biomedit.ch/rdf/sphn-resource/chop/88.92.39>,<https://biomedit.ch/rdf/sphn-resource/chop/87.37.00>,<https://biomedit.ch/rdf/sphn-resource/chop/87.89>,<https://biomedit.ch/rdf/sphn-resource/chop/87.24>,<https://biomedit.ch/rdf/sphn-resource/chop/87.31>,<https://biomedit.ch/rdf/sphn-resource/chop/87.59.10>,<https://biomedit.ch/rdf/sphn-resource/chop/88.47>,<https://biomedit.ch/rdf/sphn-resource/chop/87.29>,<https://biomedit.ch/rdf/sphn-resource/chop/88.92.29>,<https://biomedit.ch/rdf/sphn-resource/chop/92.18.02>,<https://biomedit.ch/rdf/sphn-resource/chop/88.98.00>,<https://biomedit.ch/rdf/sphn-resource/chop/88.92.22>,<https://biomedit.ch/rdf/sphn-resource/chop/87.82>,<https://biomedit.ch/rdf/sphn-resource/chop/88.97.16>,<https://biomedit.ch/rdf/sphn-resource/chop/92.18.04>,<https://biomedit.ch/rdf/sphn-resource/chop/87.72>,<https://biomedit.ch/rdf/sphn-resource/chop/87.41.99>,<https://biomedit.ch/rdf/sphn-resource/chop/87.02>,<https://biomedit.ch/rdf/sphn-resource/chop/92.05.09>,<https://biomedit.ch/rdf/sphn-resource/chop/00.25>,<https://biomedit.ch/rdf/sphn-resource/chop/88.42.11>,<https://biomedit.ch/rdf/sphn-resource/chop/87.41.14>,<https://biomedit.ch/rdf/sphn-resource/chop/87.65>,<https://biomedit.ch/rdf/sphn-resource/chop/88.01.20>,<https://biomedit.ch/rdf/sphn-resource/chop/88.94.99>,<https://biomedit.ch/rdf/sphn-resource/chop/92.04>,<https://biomedit.ch/rdf/sphn-resource/chop/87.41.12>,<https://biomedit.ch/rdf/sphn-resource/chop/88.67>,<https://biomedit.ch/rdf/sphn-resource/chop/87.54.00>,<https://biomedit.ch/rdf/sphn-resource/chop/92.19.08>,<https://biomedit.ch/rdf/sphn-resource/chop/88.49.99>,<https://biomedit.ch/rdf/sphn-resource/chop/87.06>,<https://biomedit.ch/rdf/sphn-resource/chop/87.81>,<https://biomedit.ch/rdf/sphn-resource/chop/88.92.12>,<https://biomedit.ch/rdf/sphn-resource/chop/88.12>,<https://biomedit.ch/rdf/sphn-resource/chop/88.42.00>,<https://biomedit.ch/rdf/sphn-resource/chop/88.56>,<https://biomedit.ch/rdf/sphn-resource/chop/88.98.99>,<https://biomedit.ch/rdf/sphn-resource/chop/87.41.16>,<https://biomedit.ch/rdf/sphn-resource/chop/88.57>,<https://biomedit.ch/rdf/sphn-resource/chop/88.97.18>,<https://biomedit.ch/rdf/sphn-resource/chop/88.94.13>,<https://biomedit.ch/rdf/sphn-resource/chop/88.52>,<https://biomedit.ch/rdf/sphn-resource/chop/88.90.10>,<https://biomedit.ch/rdf/sphn-resource/chop/88.60>,<https://biomedit.ch/rdf/sphn-resource/chop/87.33>,<https://biomedit.ch/rdf/sphn-resource/chop/88.09>,<https://biomedit.ch/rdf/sphn-resource/chop/87.61.00>,<https://biomedit.ch/rdf/sphn-resource/chop/88.61.99>,<https://biomedit.ch/rdf/sphn-resource/chop/88.13>,<https://biomedit.ch/rdf/sphn-resource/chop/88.01.10>,<https://biomedit.ch/rdf/sphn-resource/chop/88.97.12>,<https://biomedit.ch/rdf/sphn-resource/chop/88.94.00>,<https://biomedit.ch/rdf/sphn-resource/chop/88.98.10>,<https://biomedit.ch/rdf/sphn-resource/chop/88.91.00>,<https://biomedit.ch/rdf/sphn-resource/chop/88.38.50>,<https://biomedit.ch/rdf/sphn-resource/chop/87.23>,<https://biomedit.ch/rdf/sphn-resource/chop/88.19>,<https://biomedit.ch/rdf/sphn-resource/chop/88.62>,<https://biomedit.ch/rdf/sphn-resource/chop/88.63.00>,<https://biomedit.ch/rdf/sphn-resource/chop/88.38.99>,<https://biomedit.ch/rdf/sphn-resource/chop/88.24>,<https://biomedit.ch/rdf/sphn-resource/chop/88.61.10>,<https://biomedit.ch/rdf/sphn-resource/chop/87.76.99>,<https://biomedit.ch/rdf/sphn-resource/chop/88.01.99>,<https://biomedit.ch/rdf/sphn-resource/chop/87.54.99>,<https://biomedit.ch/rdf/sphn-resource/chop/87.76.10>,<https://biomedit.ch/rdf/sphn-resource/chop/92.19.04>,<https://biomedit.ch/rdf/sphn-resource/chop/87.64.20>,<https://biomedit.ch/rdf/sphn-resource/chop/87.15>,<https://biomedit.ch/rdf/sphn-resource/chop/88.92.31>,<https://biomedit.ch/rdf/sphn-resource/chop/92.05.12>,<https://biomedit.ch/rdf/sphn-resource/chop/92.05.13>,<https://biomedit.ch/rdf/sphn-resource/chop/88.46>,<https://biomedit.ch/rdf/sphn-resource/chop/88.49.11>,<https://biomedit.ch/rdf/sphn-resource/chop/88.33>,<https://biomedit.ch/rdf/sphn-resource/chop/87.14>,<https://biomedit.ch/rdf/sphn-resource/chop/88.34>,<https://biomedit.ch/rdf/sphn-resource/chop/88.42.99>,<https://biomedit.ch/rdf/sphn-resource/chop/87.77.10>,<https://biomedit.ch/rdf/sphn-resource/chop/88.48.99>,<https://biomedit.ch/rdf/sphn-resource/chop/88.41.11>,<https://biomedit.ch/rdf/sphn-resource/chop/87.41.15>,<https://biomedit.ch/rdf/sphn-resource/chop/87.39>,<https://biomedit.ch/rdf/sphn-resource/chop/87.77.00>,<https://biomedit.ch/rdf/sphn-resource/chop/87.41.00>,<https://biomedit.ch/rdf/sphn-resource/chop/87.71>,<https://biomedit.ch/rdf/sphn-resource/chop/92.18.00>,<https://biomedit.ch/rdf/sphn-resource/chop/88.38.22>,<https://biomedit.ch/rdf/sphn-resource/chop/88.38.30>,<https://biomedit.ch/rdf/sphn-resource/chop/88.38.32>,<https://biomedit.ch/rdf/sphn-resource/chop/88.55>,<https://biomedit.ch/rdf/sphn-resource/chop/92.19.06>,<https://biomedit.ch/rdf/sphn-resource/chop/87.85>,<https://biomedit.ch/rdf/sphn-resource/chop/88.16>,<https://biomedit.ch/rdf/sphn-resource/chop/88.38.31>,<https://biomedit.ch/rdf/sphn-resource/chop/88.92.11>,<https://biomedit.ch/rdf/sphn-resource/chop/88.23>,<https://biomedit.ch/rdf/sphn-resource/chop/88.26>,<https://biomedit.ch/rdf/sphn-resource/chop/88.97.11>,<https://biomedit.ch/rdf/sphn-resource/chop/87.83>,<https://biomedit.ch/rdf/sphn-resource/chop/92.13>,<https://biomedit.ch/rdf/sphn-resource/chop/87.21.99>,<https://biomedit.ch/rdf/sphn-resource/chop/92.05.19>,<https://biomedit.ch/rdf/sphn-resource/chop/88.53>,<https://biomedit.ch/rdf/sphn-resource/chop/87.32>,<https://biomedit.ch/rdf/sphn-resource/chop/87.41.11>,<https://biomedit.ch/rdf/sphn-resource/chop/88.92.23>,<https://biomedit.ch/rdf/sphn-resource/chop/92.16>,<https://biomedit.ch/rdf/sphn-resource/chop/88.96>,<https://biomedit.ch/rdf/sphn-resource/chop/87.78>,<https://biomedit.ch/rdf/sphn-resource/chop/88.38.20>,<https://biomedit.ch/rdf/sphn-resource/chop/88.90.30>,<https://biomedit.ch/rdf/sphn-resource/chop/87.53>,<https://biomedit.ch/rdf/sphn-resource/chop/88.25>,<https://biomedit.ch/rdf/sphn-resource/chop/88.31>,<https://biomedit.ch/rdf/sphn-resource/chop/87.52>,<https://biomedit.ch/rdf/sphn-resource/chop/88.49.10>,<https://biomedit.ch/rdf/sphn-resource/chop/87.99>,<https://biomedit.ch/rdf/sphn-resource/chop/88.63.10>,<https://biomedit.ch/rdf/sphn-resource/chop/87.09.10>,<https://biomedit.ch/rdf/sphn-resource/chop/88.92.30>,<https://biomedit.ch/rdf/sphn-resource/chop/88.92.99>,<https://biomedit.ch/rdf/sphn-resource/chop/88.97.19>,<https://biomedit.ch/rdf/sphn-resource/chop/88.37>,<https://biomedit.ch/rdf/sphn-resource/chop/88.63.99>,<https://biomedit.ch/rdf/sphn-resource/chop/92.18.08>,<https://biomedit.ch/rdf/sphn-resource/chop/87.08>,<https://biomedit.ch/rdf/sphn-resource/chop/88.97.99>,<https://biomedit.ch/rdf/sphn-resource/chop/87.13>,<https://biomedit.ch/rdf/sphn-resource/chop/88.94.14>,<https://biomedit.ch/rdf/sphn-resource/chop/92.01>,<https://biomedit.ch/rdf/sphn-resource/chop/87.73>,<https://biomedit.ch/rdf/sphn-resource/chop/88.49.00>,<https://biomedit.ch/rdf/sphn-resource/chop/92.11.00>,<https://biomedit.ch/rdf/sphn-resource/chop/87.61.99>,<https://biomedit.ch/rdf/sphn-resource/chop/88.94.16>,<https://biomedit.ch/rdf/sphn-resource/chop/88.27>,<https://biomedit.ch/rdf/sphn-resource/chop/87.94>,<https://biomedit.ch/rdf/sphn-resource/chop/88.38.51>,<https://biomedit.ch/rdf/sphn-resource/chop/88.66>,<https://biomedit.ch/rdf/sphn-resource/chop/87.21.00>,<https://biomedit.ch/rdf/sphn-resource/chop/87.93>,<https://biomedit.ch/rdf/sphn-resource/chop/88.91.99>,<https://biomedit.ch/rdf/sphn-resource/chop/88.38.21>,<https://biomedit.ch/rdf/sphn-resource/chop/88.97.10>,<https://biomedit.ch/rdf/sphn-resource/chop/92.05.00>,<https://biomedit.ch/rdf/sphn-resource/chop/92.18.03>,<https://biomedit.ch/rdf/sphn-resource/chop/92.19.05>,<https://biomedit.ch/rdf/sphn-resource/chop/88.04>,<https://biomedit.ch/rdf/sphn-resource/chop/88.32>,<https://biomedit.ch/rdf/sphn-resource/chop/87.37.99>,<https://biomedit.ch/rdf/sphn-resource/chop/88.01.00>,<https://biomedit.ch/rdf/sphn-resource/chop/00.22>,<https://biomedit.ch/rdf/sphn-resource/chop/87.01>,<https://biomedit.ch/rdf/sphn-resource/chop/87.66>,<https://biomedit.ch/rdf/sphn-resource/chop/88.39.10>,<https://biomedit.ch/rdf/sphn-resource/chop/92.14>,<https://biomedit.ch/rdf/sphn-resource/chop/87.03>,<https://biomedit.ch/rdf/sphn-resource/chop/00.21>,<https://biomedit.ch/rdf/sphn-resource/chop/87.59.99>,<https://biomedit.ch/rdf/sphn-resource/chop/88.59>,<https://biomedit.ch/rdf/sphn-resource/chop/92.19.03>,<https://biomedit.ch/rdf/sphn-resource/chop/88.42.10>,<https://biomedit.ch/rdf/sphn-resource/chop/88.36>,<https://biomedit.ch/rdf/sphn-resource/chop/88.92.24>,<https://biomedit.ch/rdf/sphn-resource/chop/92.19.01>,<https://biomedit.ch/rdf/sphn-resource/chop/87.76.00>,<https://biomedit.ch/rdf/sphn-resource/chop/88.39.30>,<https://biomedit.ch/rdf/sphn-resource/chop/87.75>,<https://biomedit.ch/rdf/sphn-resource/chop/87.41.19>,<https://biomedit.ch/rdf/sphn-resource/chop/88.39.00>,<https://biomedit.ch/rdf/sphn-resource/chop/88.50>,<https://biomedit.ch/rdf/sphn-resource/chop/87.04.00>,<https://biomedit.ch/rdf/sphn-resource/chop/87.49>,<https://biomedit.ch/rdf/sphn-resource/chop/88.69>,<https://biomedit.ch/rdf/sphn-resource/chop/88.38.40>,<https://biomedit.ch/rdf/sphn-resource/chop/88.94.12>,<https://biomedit.ch/rdf/sphn-resource/chop/88.95>,<https://biomedit.ch/rdf/sphn-resource/chop/92.19.00>,<https://biomedit.ch/rdf/sphn-resource/chop/92.12>,<https://biomedit.ch/rdf/sphn-resource/chop/88.39.99>,<https://biomedit.ch/rdf/sphn-resource/chop/88.02>,<https://biomedit.ch/rdf/sphn-resource/chop/88.11>,<https://biomedit.ch/rdf/sphn-resource/chop/87.64.99>,<https://biomedit.ch/rdf/sphn-resource/chop/87.35>,<https://biomedit.ch/rdf/sphn-resource/chop/88.38.60>,<https://biomedit.ch/rdf/sphn-resource/chop/88.41.21>,<https://biomedit.ch/rdf/sphn-resource/chop/87.79>,<https://biomedit.ch/rdf/sphn-resource/chop/92.18.01>,<https://biomedit.ch/rdf/sphn-resource/chop/88.38.00>,<https://biomedit.ch/rdf/sphn-resource/chop/88.92.00>,<https://biomedit.ch/rdf/sphn-resource/chop/87.84>,<https://biomedit.ch/rdf/sphn-resource/chop/88.92.21>,<https://biomedit.ch/rdf/sphn-resource/chop/88.61.00>,<https://biomedit.ch/rdf/sphn-resource/chop/88.92.33>,<https://biomedit.ch/rdf/sphn-resource/chop/88.68>,<https://biomedit.ch/rdf/sphn-resource/chop/88.65>,<https://biomedit.ch/rdf/sphn-resource/chop/88.44>,<https://biomedit.ch/rdf/sphn-resource/chop/92.11.08>,<https://biomedit.ch/rdf/sphn-resource/chop/88.97.20>,<https://biomedit.ch/rdf/sphn-resource/chop/88.92.13>,<https://biomedit.ch/rdf/sphn-resource/chop/88.94.10>,<https://biomedit.ch/rdf/sphn-resource/chop/87.09.99>,<https://biomedit.ch/rdf/sphn-resource/chop/92.05.11>,<https://biomedit.ch/rdf/sphn-resource/chop/87.21.10>,<https://biomedit.ch/rdf/sphn-resource/chop/87.61.10>,<https://biomedit.ch/rdf/sphn-resource/chop/87.41.10>,<https://biomedit.ch/rdf/sphn-resource/chop/87.12>,<https://biomedit.ch/rdf/sphn-resource/chop/92.09.00>,<https://biomedit.ch/rdf/sphn-resource/chop/88.92.34>,<https://biomedit.ch/rdf/sphn-resource/chop/00.23>,<https://biomedit.ch/rdf/sphn-resource/chop/87.95>,<https://biomedit.ch/rdf/sphn-resource/chop/87.09.00>,<https://biomedit.ch/rdf/sphn-resource/chop/87.18>,<https://biomedit.ch/rdf/sphn-resource/chop/87.59.00>,<https://biomedit.ch/rdf/sphn-resource/chop/87.41.13>,<https://biomedit.ch/rdf/sphn-resource/chop/87.92>,<https://biomedit.ch/rdf/sphn-resource/chop/87.69>,<https://biomedit.ch/rdf/sphn-resource/chop/88.22>,<https://biomedit.ch/rdf/sphn-resource/chop/88.48.10>,<https://biomedit.ch/rdf/sphn-resource/chop/88.92.10>,<https://biomedit.ch/rdf/sphn-resource/chop/92.19.02>,<https://biomedit.ch/rdf/sphn-resource/chop/88.14>,<https://biomedit.ch/rdf/sphn-resource/chop/88.39.21>,<https://biomedit.ch/rdf/sphn-resource/chop/88.03>,<https://biomedit.ch/rdf/sphn-resource/chop/87.05>,<https://biomedit.ch/rdf/sphn-resource/chop/88.92.20>,<https://biomedit.ch/rdf/sphn-resource/chop/88.35>,<https://biomedit.ch/rdf/sphn-resource/chop/92.02>,<https://biomedit.ch/rdf/sphn-resource/chop/88.38.41>,<https://biomedit.ch/rdf/sphn-resource/chop/92.05.14>,<https://biomedit.ch/rdf/sphn-resource/chop/88.94.11>,<https://biomedit.ch/rdf/sphn-resource/chop/88.51>,<https://biomedit.ch/rdf/sphn-resource/chop/88.43>,<https://biomedit.ch/rdf/sphn-resource/chop/87.74>,<https://biomedit.ch/rdf/sphn-resource/chop/87.04.99>,<https://biomedit.ch/rdf/sphn-resource/chop/88.15>,<https://biomedit.ch/rdf/sphn-resource/chop/88.92.32>,<https://biomedit.ch/rdf/sphn-resource/chop/92.05.10>,<https://biomedit.ch/rdf/sphn-resource/chop/88.28>,<https://biomedit.ch/rdf/sphn-resource/chop/87.91>,<https://biomedit.ch/rdf/sphn-resource/chop/92.03>,<https://biomedit.ch/rdf/sphn-resource/chop/92.09.10>,<https://biomedit.ch/rdf/sphn-resource/chop/87.04.10>,<https://biomedit.ch/rdf/sphn-resource/chop/88.92.19>,<https://biomedit.ch/rdf/sphn-resource/chop/00.28>,<https://biomedit.ch/rdf/sphn-resource/chop/87.22>,<https://biomedit.ch/rdf/sphn-resource/chop/88.97.15>,<https://biomedit.ch/rdf/sphn-resource/chop/88.97.17>,<https://biomedit.ch/rdf/sphn-resource/chop/92.09.99>,<https://biomedit.ch/rdf/sphn-resource/chop/87.62>,<https://biomedit.ch/rdf/sphn-resource/chop/88.91.10>,<https://biomedit.ch/rdf/sphn-resource/chop/87.37.10>,<https://biomedit.ch/rdf/sphn-resource/chop/88.40>,<https://biomedit.ch/rdf/sphn-resource/chop/88.21>) ) .
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.97.00> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.63> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.64.30> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.54> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.38> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.92.14> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.77.99> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/92.18.05> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.58> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.48.00> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.91.11> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.39.20> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.64.10> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.54.10> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.64> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.34> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.29> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.36> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.51> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.45> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.97.14> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/92.15> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.07> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.64.00> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.04.11> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.92.39> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.37.00> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.89> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.24> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.31> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.59.10> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.47> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.29> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.92.29> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/92.18.02> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.98.00> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.92.22> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.82> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.97.16> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/92.18.04> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.72> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.41.99> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.02> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/92.05.09> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/00.25> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.42.11> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.41.14> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.65> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.01.20> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.94.99> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/92.04> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.41.12> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.67> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.54.00> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/92.19.08> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.49.99> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.06> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.81> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.92.12> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.12> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.42.00> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.56> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.98.99> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.41.16> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.57> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.97.18> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.94.13> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.52> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.90.10> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.60> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.33> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.09> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.61.00> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.61.99> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.13> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.01.10> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.97.12> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.94.00> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.98.10> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.91.00> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.38.50> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.23> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.19> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.62> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.63.00> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.38.99> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.24> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.61.10> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.76.99> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.01.99> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.54.99> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.76.10> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/92.19.04> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.64.20> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.15> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.92.31> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/92.05.12> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/92.05.13> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.46> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.49.11> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.33> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.14> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.34> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.42.99> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.77.10> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.48.99> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.41.11> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.41.15> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.39> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.77.00> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.41.00> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.71> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/92.18.00> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.38.22> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.38.30> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.38.32> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.55> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/92.19.06> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.85> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.16> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.38.31> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.92.11> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.23> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.26> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.97.11> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.83> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/92.13> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.21.99> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/92.05.19> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.53> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.32> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.41.11> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.92.23> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/92.16> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.96> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.78> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.38.20> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.90.30> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.53> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.25> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.31> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.52> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.49.10> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.99> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.63.10> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.09.10> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.92.30> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.92.99> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.97.19> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.37> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.63.99> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/92.18.08> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.08> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.97.99> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.13> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.94.14> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/92.01> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.73> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.49.00> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/92.11.00> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.61.99> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.94.16> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.27> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.94> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.38.51> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.66> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.21.00> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.93> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.91.99> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.38.21> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.97.10> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/92.05.00> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/92.18.03> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/92.19.05> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.04> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.32> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.37.99> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.01.00> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/00.22> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.01> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.66> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.39.10> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/92.14> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.03> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/00.21> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.59.99> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.59> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/92.19.03> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.42.10> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.36> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.92.24> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/92.19.01> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.76.00> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.39.30> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.75> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.41.19> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.39.00> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.50> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.04.00> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.49> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.69> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.38.40> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.94.12> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.95> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/92.19.00> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/92.12> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.39.99> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.02> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.11> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.64.99> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.35> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.38.60> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.41.21> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.79> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/92.18.01> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.38.00> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.92.00> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.84> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.92.21> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.61.00> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.92.33> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.68> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.65> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.44> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/92.11.08> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.97.20> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.92.13> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.94.10> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.09.99> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/92.05.11> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.21.10> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.61.10> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.41.10> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.12> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/92.09.00> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.92.34> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/00.23> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.95> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.09.00> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.18> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.59.00> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.41.13> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.92> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.69> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.22> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.48.10> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.92.10> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/92.19.02> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.14> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.39.21> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.03> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.05> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.92.20> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.35> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/92.02> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.38.41> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/92.05.14> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.94.11> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.51> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.43> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.74> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.04.99> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.15> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.92.32> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/92.05.10> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.28> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.91> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/92.03> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/92.09.10> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.04.10> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.92.19> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/00.28> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.22> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.97.15> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.97.17> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/92.09.99> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.62> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.91.10> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/87.37.10> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.40> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<https://biomedit.ch/rdf/sphn-resource/chop/88.21> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+}""" ] ;
+    sh:targetClass :DiagnosticRadiologicExamination .
+
+constraints:DiagnosticRadiologicExamination_method a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:in ( :CT :PET :SPECT :MRI :PETCT :X-ray ) ;
+            sh:path [ sh:inversePath rdf:type ] ] ;
+    sh:targetClass :DiagnosticRadiologicExamination_method .
+
+constraints:Drug a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class :Terminology ] [ sh:class :Code ] ) ;
+            sh:path :hasProductCode ],
+        [ sh:class :PharmaceuticalDoseForm ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasManufacturedDoseForm ],
+        [ sh:class :Substance ;
+            sh:minCount 0 ;
+            sh:path :hasInactiveIngredient ],
+        [ sh:class :Substance ;
+            sh:minCount 0 ;
+            sh:path :hasActiveIngredient ] ;
+    sh:targetClass :Drug .

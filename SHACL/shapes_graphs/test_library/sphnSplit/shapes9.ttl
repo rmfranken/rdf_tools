@@ -1,0 +1,290 @@
+@prefix : <https://biomedit.ch/rdf/sphn-ontology/sphn#> .
+@prefix chop: <https://biomedit.ch/rdf/sphn-resource/chop/> .
+@prefix constraints: <https://biomedit.ch/rdf/sphn-ontology-constraints/sphn#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix icd-10-gm: <https://biomedit.ch/rdf/sphn-resource/icd-10-gm/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix snomed: <http://snomed.info/id/> .
+@prefix sphn-atc: <https://biomedit.ch/rdf/sphn-resource/atc/> .
+@prefix sphn-loinc: <https://biomedit.ch/rdf/sphn-resource/loinc/> .
+@prefix ucum: <https://biomedit.ch/rdf/sphn-resource/ucum/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+constraints:PharmaceuticalDoseForm a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class snomed:736542009 ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasCode ] ;
+    sh:targetClass :PharmaceuticalDoseForm .
+
+constraints:ProblemCondition a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasRecordDateTime ],
+        [ sh:class :AdministrativeCase ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasAdministrativeCase ],
+        [ sh:class :DataProviderInstitute ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasDataProviderInstitute ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasFreeText ],
+        [ sh:class snomed:307152002 ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasRelativeTemporalityCode ],
+        [ sh:class :SubjectPseudoIdentifier ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasSubjectPseudoIdentifier ],
+        [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasOnsetDateTime ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class :Terminology ] [ sh:class :Code ] ) ;
+            sh:path :hasCode ] ;
+    sh:targetClass :ProblemCondition .
+
+constraints:Procedure a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:or ( [ sh:class :Terminology ] [ sh:class :Code ] ) ;
+            sh:path :hasCode ],
+        [ sh:class :DataProviderInstitute ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasDataProviderInstitute ],
+        [ sh:class :SubjectPseudoIdentifier ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasSubjectPseudoIdentifier ],
+        [ sh:class :Intent ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasIntent ],
+        [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasEndDateTime ],
+        [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasCodingDateTime ],
+        [ sh:class :AdministrativeCase ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasAdministrativeCase ],
+        [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasStartDateTime ],
+        [ sh:class :BodySite ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasBodySite ] ;
+    sh:target [ a sh:SPARQLTarget ;
+            sh:select """SELECT ?this
+                    WHERE {
+                    ?this <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://biomedit.ch/rdf/sphn-ontology/sphn#Procedure> .
+                    MINUS {
+                        ?this <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://biomedit.ch/rdf/sphn-ontology/sphn#Procedure> .
+                        ?this <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?other_type .
+                        FILTER (?other_type != <https://biomedit.ch/rdf/sphn-ontology/sphn#Procedure> )
+                        ?this <http://www.w3.org/2000/01/rdf-schema#subClassOf>+  <https://biomedit.ch/rdf/sphn-ontology/sphn#Procedure> .
+                        }
+                    }""" ] .
+
+constraints:Quantity a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:or ( [ sh:datatype xsd:double ] [ sh:datatype xsd:string ] ) ;
+            sh:path :hasValue ],
+        [ sh:class :Quantity_comparator ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasComparator ],
+        [ sh:class :Unit ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasUnit ] ;
+    sh:targetClass :Quantity .
+
+constraints:Quantity_comparator a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:in ( :GreaterThan :LessThanOrEqual :LessThan :Equal :GreaterThanOrEqual ) ;
+            sh:path [ sh:inversePath rdf:type ] ] ;
+    sh:targetClass :Quantity_comparator .
+
+constraints:RadiotherapyProcedure a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasCodingDateTime ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:or ( [ sh:class snomed:152198000 ] [ sh:class snomed:74964007 ] [ sh:class snomed:399315003 ] [ sh:class snomed:168524008 ] [ sh:class snomed:33195004 ] [ sh:class snomed:395096001 ] [ sh:class snomed:115959002 ] [ sh:class snomed:78080008 ] ) ;
+            sh:path :hasCode ],
+        [ sh:in ( ucum:Mbq ucum:mCi ucum:Gy ucum:cGy ) ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path ( :hasRadiationQuantity :hasUnit :hasCode ) ],
+        [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasEndDateTime ],
+        [ sh:class :AdministrativeCase ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasAdministrativeCase ],
+        [ sh:class :SubjectPseudoIdentifier ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasSubjectPseudoIdentifier ],
+        [ sh:datatype xsd:dateTime ;
+            sh:path :hasDateTime ],
+        [ sh:class :Intent ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasIntent ],
+        [ sh:class :DataProviderInstitute ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasDataProviderInstitute ],
+        [ sh:class :Quantity ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasFractionsNumber ],
+        [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasStartDateTime ],
+        [ sh:class :BodySite ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasBodySite ] ;
+    sh:sparql [ a sh:SPARQLConstraint ;
+            sh:message "No subclasses of the specified codes are allowed" ;
+            sh:select """
+                                        SELECT ?this (<https://biomedit.ch/rdf/sphn-ontology/sphn#hasCode> as ?path) (?class as ?value)
+                                        WHERE {
+                                        ?this <https://biomedit.ch/rdf/sphn-ontology/sphn#hasCode>/<http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?class .
+                                        FILTER (?class NOT IN (<http://snomed.info/id/152198000>,<http://snomed.info/id/74964007>,<http://snomed.info/id/399315003>,<http://snomed.info/id/168524008>,<http://snomed.info/id/33195004>,<http://snomed.info/id/395096001>,<http://snomed.info/id/115959002>,<http://snomed.info/id/78080008>) ) .
+FILTER NOT EXISTS {<http://snomed.info/id/152198000> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<http://snomed.info/id/74964007> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<http://snomed.info/id/399315003> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<http://snomed.info/id/168524008> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<http://snomed.info/id/33195004> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<http://snomed.info/id/395096001> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<http://snomed.info/id/115959002> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<http://snomed.info/id/78080008> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+}""" ] ;
+    sh:targetClass :RadiotherapyProcedure .
+
+constraints:ReferenceRange a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class :Quantity ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasLowerLimit ],
+        [ sh:class :Quantity ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasUpperLimit ] ;
+    sh:targetClass :ReferenceRange .
+
+constraints:RespiratoryRate a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class :Quantity ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasQuantity ],
+        [ sh:class :SubjectPseudoIdentifier ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasSubjectPseudoIdentifier ],
+        [ sh:class :DataProviderInstitute ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasDataProviderInstitute ],
+        [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasDeterminationDateTime ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class snomed:258104002 ] [ sh:class snomed:87982008 ] [ sh:class snomed:263760002 ] [ sh:class snomed:261665006 ] [ sh:class snomed:258090004 ] ) ;
+            sh:path ( :hasDataDetermination :hasMethodCode ) ],
+        [ sh:class :AdministrativeCase ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasAdministrativeCase ] ;
+    sh:sparql [ a sh:SPARQLConstraint ;
+            sh:message "No subclasses of the specified codes are allowed" ;
+            sh:select """
+                                        SELECT ?this (<https://biomedit.ch/rdf/sphn-ontology/sphn#hasDataDetermination>/<https://biomedit.ch/rdf/sphn-ontology/sphn#hasMethodCode> as ?path) (?class as ?value)
+                                        WHERE {
+                                        ?this <https://biomedit.ch/rdf/sphn-ontology/sphn#hasDataDetermination>/<https://biomedit.ch/rdf/sphn-ontology/sphn#hasMethodCode>/<http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?class .
+                                        FILTER (?class NOT IN (<http://snomed.info/id/258104002>,<http://snomed.info/id/87982008>,<http://snomed.info/id/263760002>,<http://snomed.info/id/261665006>,<http://snomed.info/id/258090004>) ) .
+FILTER NOT EXISTS {<http://snomed.info/id/258104002> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<http://snomed.info/id/87982008> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<http://snomed.info/id/263760002> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<http://snomed.info/id/261665006> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<http://snomed.info/id/258090004> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+}""" ] ;
+    sh:targetClass :RespiratoryRate .
+
+constraints:SimpleScore a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasScoringSystem ],
+        [ sh:class snomed:138875005 ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasScoringSystemCode ],
+        [ sh:class :AdministrativeCase ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasAdministrativeCase ],
+        [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasAssessmentDateTime ],
+        [ sh:class :SubjectPseudoIdentifier ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasSubjectPseudoIdentifier ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:or ( [ sh:datatype xsd:double ] [ sh:datatype xsd:string ] ) ;
+            sh:path :hasValue ],
+        [ sh:class :DataProviderInstitute ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasDataProviderInstitute ] ;
+    sh:targetClass :SimpleScore .

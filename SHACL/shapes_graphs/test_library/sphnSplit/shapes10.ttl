@@ -1,0 +1,218 @@
+@prefix : <https://biomedit.ch/rdf/sphn-ontology/sphn#> .
+@prefix chop: <https://biomedit.ch/rdf/sphn-resource/chop/> .
+@prefix constraints: <https://biomedit.ch/rdf/sphn-ontology-constraints/sphn#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix icd-10-gm: <https://biomedit.ch/rdf/sphn-resource/icd-10-gm/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix snomed: <http://snomed.info/id/> .
+@prefix sphn-atc: <https://biomedit.ch/rdf/sphn-resource/atc/> .
+@prefix sphn-loinc: <https://biomedit.ch/rdf/sphn-resource/loinc/> .
+@prefix ucum: <https://biomedit.ch/rdf/sphn-resource/ucum/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+constraints:SubjectPseudoIdentifier a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasIdentifier ],
+        [ sh:class :DataProviderInstitute ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasDataProviderInstitute ] ;
+    sh:targetClass :SubjectPseudoIdentifier .
+
+constraints:Substance a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class :Quantity ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasQuantity ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class :Code ] [ sh:class sphn-atc:ATC ] [ sh:class snomed:105590001 ] ) ;
+            sh:path :hasCode ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasGenericName ] ;
+    sh:targetClass :Substance .
+
+constraints:TNMClassification a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasMPrefix ],
+        [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasAssessmentDateTime ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasNSuffix ],
+        [ sh:class :SubjectPseudoIdentifier ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasSubjectPseudoIdentifier ],
+        [ sh:class :AdministrativeCase ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasAdministrativeCase ],
+        [ sh:class :DataProviderInstitute ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasDataProviderInstitute ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasTSuffix ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasNPrefix ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasVersion ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasMSuffix ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasTPrefix ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:or ( [ sh:datatype xsd:double ] [ sh:datatype xsd:string ] ) ;
+            sh:path :hasValue ] ;
+    sh:targetClass :TNMClassification .
+
+constraints:TherapeuticArea a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class :TherapeuticArea_specialtyName ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasSpecialtyName ] ;
+    sh:targetClass :TherapeuticArea .
+
+constraints:TherapeuticArea_specialtyName a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:in ( :HealthPsychology :TropicalAndTravelMedicine :Psychotherapy :ClinicalPsychology :Neuropsychology :CommunityPharmacy :DermatologyAndVenereology :ThoracicSurgery :Infectology :GeneralMedicalPractitioner :ForensicMedicine :GeriatricMedicine :HandSurgery :GeneralInternalMedicine :ReconstructiveDentistry :VascularSurgery :Periodontics :Pneumology :Otorhinolaryngology :PharmaceuticalMedicine :AllergologyAndClinicalImmunology :PsychiatryAndPsychotherapy :ChildAndAdolescentPsychiatryAndPsychotherapy :Cardiology :PlasticReconstructiveAndAestheticSurgery :Pathology :OralAndMaxillofacialSurgery :MedicalOncology :GeneralMedicine :Neurosurgery :Surgery :AddictionMedicine :GynaecologyAndObstetrics :Nephrology :Ophthalmology :Other :Angiology :Rheumatology :MedicalGenetics :ChildAndAdolescentPsychology :OrthopaedicSurgeryAndTraumatologyOfTheLocomotorApparatus :InternalMedicine :CardiacAndThoracicVascularSurgery :Neurology :Haematology :PhysicalMedicineAndRehabilitation :PreventionAndPublicHealth :IntensiveCareMedicine :Gastroenterology :ClinicalPharmacologyAndToxicology :Paediatrics :PaediatricSurgery :Anaesthesiology :VisceralMedicine :Urology :EndocrinologyAndDiabetology :OccupationalMedicine :RadioOncologyAndRadiotherapy :OralSurgery :Orthodontics :ChiropracticSpecialist :NuclearMedicine :HospitalPharmacy :Radiology ) ;
+            sh:path [ sh:inversePath rdf:type ] ] ;
+    sh:targetClass :TherapeuticArea_specialtyName .
+
+constraints:TimePattern a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:or ( [ sh:class snomed:385432009 ] [ sh:class snomed:7087005 ] [ sh:class snomed:255238004 ] ) ;
+            sh:path :hasTypeCode ] ;
+    sh:sparql [ a sh:SPARQLConstraint ;
+            sh:message "No subclasses of the specified codes are allowed" ;
+            sh:select """
+                                        SELECT ?this (<https://biomedit.ch/rdf/sphn-ontology/sphn#hasTypeCode> as ?path) (?class as ?value)
+                                        WHERE {
+                                        ?this <https://biomedit.ch/rdf/sphn-ontology/sphn#hasTypeCode>/<http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?class .
+                                        FILTER (?class NOT IN (<http://snomed.info/id/385432009>,<http://snomed.info/id/7087005>,<http://snomed.info/id/255238004>) ) .
+FILTER NOT EXISTS {<http://snomed.info/id/385432009> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<http://snomed.info/id/7087005> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<http://snomed.info/id/255238004> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+}""" ] ;
+    sh:targetClass :TimePattern .
+
+constraints:TumorGrade a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class :AdministrativeCase ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasAdministrativeCase ],
+        [ sh:class :DataProviderInstitute ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasDataProviderInstitute ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:or ( [ sh:class :Terminology ] [ sh:class :Code ] ) ;
+            sh:path :hasCode ],
+        [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasAssessmentDateTime ],
+        [ sh:class :SubjectPseudoIdentifier ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasSubjectPseudoIdentifier ] ;
+    sh:targetClass :TumorGrade .
+
+constraints:TumorSpecimen a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class :SubjectPseudoIdentifier ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasSubjectPseudoIdentifier ],
+        [ sh:class :DataProviderInstitute ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasDataProviderInstitute ],
+        [ sh:in ( ucum:percent ) ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path ( :hasTumorPurity :hasUnit :hasCode ) ],
+        [ sh:class :AdministrativeCase ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasAdministrativeCase ],
+        [ sh:class :Biosample ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasBiosample ] ;
+    sh:targetClass :TumorSpecimen .
+
+constraints:TumorStage a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:or ( [ sh:class :Terminology ] [ sh:class :Code ] ) ;
+            sh:path :hasCode ],
+        [ sh:class :AdministrativeCase ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasAdministrativeCase ],
+        [ sh:class :DataProviderInstitute ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasDataProviderInstitute ],
+        [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasAssessmentDateTime ],
+        [ sh:class :SubjectPseudoIdentifier ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasSubjectPseudoIdentifier ] ;
+    sh:targetClass :TumorStage .
+
+constraints:Unit a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class ucum:UCUM ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasCode ] ;
+    sh:targetClass :Unit .
+

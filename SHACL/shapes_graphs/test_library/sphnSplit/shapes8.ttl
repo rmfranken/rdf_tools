@@ -1,0 +1,265 @@
+@prefix : <https://biomedit.ch/rdf/sphn-ontology/sphn#> .
+@prefix chop: <https://biomedit.ch/rdf/sphn-resource/chop/> .
+@prefix constraints: <https://biomedit.ch/rdf/sphn-ontology-constraints/sphn#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix icd-10-gm: <https://biomedit.ch/rdf/sphn-resource/icd-10-gm/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix snomed: <http://snomed.info/id/> .
+@prefix sphn-atc: <https://biomedit.ch/rdf/sphn-resource/atc/> .
+@prefix sphn-loinc: <https://biomedit.ch/rdf/sphn-resource/loinc/> .
+@prefix ucum: <https://biomedit.ch/rdf/sphn-resource/ucum/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+constraints:Laterality a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:or ( [ sh:class snomed:66459002 ] [ sh:class snomed:7771000 ] [ sh:class snomed:24028007 ] [ sh:class snomed:261665006 ] [ sh:class snomed:51440002 ] ) ;
+            sh:path :hasCode ] ;
+    sh:sparql [ a sh:SPARQLConstraint ;
+            sh:message "No subclasses of the specified codes are allowed" ;
+            sh:select """
+                                        SELECT ?this (<https://biomedit.ch/rdf/sphn-ontology/sphn#hasCode> as ?path) (?class as ?value)
+                                        WHERE {
+                                        ?this <https://biomedit.ch/rdf/sphn-ontology/sphn#hasCode>/<http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?class .
+                                        FILTER (?class NOT IN (<http://snomed.info/id/66459002>,<http://snomed.info/id/7771000>,<http://snomed.info/id/24028007>,<http://snomed.info/id/261665006>,<http://snomed.info/id/51440002>) ) .
+FILTER NOT EXISTS {<http://snomed.info/id/66459002> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<http://snomed.info/id/7771000> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<http://snomed.info/id/24028007> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<http://snomed.info/id/261665006> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<http://snomed.info/id/51440002> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+}""" ] ;
+    sh:targetClass :Laterality .
+
+constraints:Location a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasExact ],
+        [ sh:class :Location_class ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasClass ],
+        [ sh:class :DataProviderInstitute ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasDataProviderInstitute ] ;
+    sh:targetClass :Location .
+
+constraints:Location_class a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:in ( :SiteOfCare :PrivateHomeBasedCare :NursingHome :AccidentAndEmergencyDepartment :DiagnosticInstitution :RehabilitationHospital :AmbulatoryCareSite :Hospital :Pharmacy :PrisonBasedCareSite :HealthAuthority :GeneralPracticePremises :MilitaryHealthInstitution :ClientOrPatientHome :MedicalCenter ) ;
+            sh:path [ sh:inversePath rdf:type ] ] ;
+    sh:targetClass :Location_class .
+
+constraints:Measurement a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class :Quantity ;
+            sh:path :hasQuantity ] ;
+    sh:target [ a sh:SPARQLTarget ;
+            sh:select """SELECT ?this
+                    WHERE {
+                    ?this <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://biomedit.ch/rdf/sphn-ontology/sphn#Measurement> .
+                    MINUS {
+                        ?this <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://biomedit.ch/rdf/sphn-ontology/sphn#Measurement> .
+                        ?this <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?other_type .
+                        FILTER (?other_type != <https://biomedit.ch/rdf/sphn-ontology/sphn#Measurement> )
+                        ?this <http://www.w3.org/2000/01/rdf-schema#subClassOf>+  <https://biomedit.ch/rdf/sphn-ontology/sphn#Measurement> .
+                        }
+                    }""" ] .
+
+constraints:MeasurementMethod a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class snomed:122869004 ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasCode ] ;
+    sh:target [ a sh:SPARQLTarget ;
+            sh:select """SELECT ?this
+                    WHERE {
+                    ?this <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://biomedit.ch/rdf/sphn-ontology/sphn#MeasurementMethod> .
+                    MINUS {
+                        ?this <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://biomedit.ch/rdf/sphn-ontology/sphn#MeasurementMethod> .
+                        ?this <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?other_type .
+                        FILTER (?other_type != <https://biomedit.ch/rdf/sphn-ontology/sphn#MeasurementMethod> )
+                        ?this <http://www.w3.org/2000/01/rdf-schema#subClassOf>+  <https://biomedit.ch/rdf/sphn-ontology/sphn#MeasurementMethod> .
+                        }
+
+                    MINUS {
+                        ?source <https://biomedit.ch/rdf/sphn-ontology/sphn#hasMeasurementMethod> ?this .
+                        ?source <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://biomedit.ch/rdf/sphn-ontology/sphn#BloodPressure> .
+                        }
+                    }""" ] .
+
+constraints:MedicalDevice a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class :Terminology ] [ sh:class :Code ] ) ;
+            sh:path :hasProductCode ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class snomed:272181003 ] [ sh:class :Code ] ) ;
+            sh:path :hasTypeCode ] ;
+    sh:target [ a sh:SPARQLTarget ;
+            sh:select """SELECT ?this
+                    WHERE {
+                    ?this <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://biomedit.ch/rdf/sphn-ontology/sphn#MedicalDevice> .
+                    MINUS {
+                        ?this <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://biomedit.ch/rdf/sphn-ontology/sphn#MedicalDevice> .
+                        ?this <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?other_type .
+                        FILTER (?other_type != <https://biomedit.ch/rdf/sphn-ontology/sphn#MedicalDevice> )
+                        ?this <http://www.w3.org/2000/01/rdf-schema#subClassOf>+  <https://biomedit.ch/rdf/sphn-ontology/sphn#MedicalDevice> .
+                        }
+                    }""" ] .
+
+constraints:NursingDiagnosis a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class :Age ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasSubjectAge ],
+        [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasRecordDateTime ],
+        [ sh:class :SubjectPseudoIdentifier ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasSubjectPseudoIdentifier ],
+        [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasCodingDateTime ],
+        [ sh:datatype xsd:dateTime ;
+            sh:path :hasDateTime ],
+        [ sh:class :AdministrativeCase ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasAdministrativeCase ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:or ( [ sh:class :Terminology ] [ sh:class :Code ] ) ;
+            sh:path :hasCode ],
+        [ sh:class :DataProviderInstitute ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasDataProviderInstitute ] ;
+    sh:targetClass :NursingDiagnosis .
+
+constraints:OncologyTreatmentAssessment a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class snomed:450436003 ] [ sh:class snomed:113091000 ] [ sh:class snomed:71040008 ] ) ;
+            sh:path :hasMethodCode ],
+        [ sh:class :BodySite ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasProgressionBodySite ],
+        [ sh:class :DataProviderInstitute ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasDataProviderInstitute ],
+        [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasAssessmentDateTime ],
+        [ sh:class :AdministrativeCase ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasAdministrativeCase ],
+        [ sh:class :SubjectPseudoIdentifier ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasSubjectPseudoIdentifier ],
+        [ sh:class :OncologyTreatmentAssessment_criteria ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasCriteria ],
+        [ sh:class :OncologyTreatmentAssessment_progressionType ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasProgressionType ],
+        [ sh:class :OncologyTreatmentAssessment_result ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasResult ] ;
+    sh:sparql [ a sh:SPARQLConstraint ;
+            sh:message "No subclasses of the specified codes are allowed" ;
+            sh:select """
+                                        SELECT ?this (<https://biomedit.ch/rdf/sphn-ontology/sphn#hasMethodCode> as ?path) (?class as ?value)
+                                        WHERE {
+                                        ?this <https://biomedit.ch/rdf/sphn-ontology/sphn#hasMethodCode>/<http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?class .
+                                        FILTER (?class NOT IN (<http://snomed.info/id/450436003>,<http://snomed.info/id/113091000>,<http://snomed.info/id/71040008>) ) .
+FILTER NOT EXISTS {<http://snomed.info/id/450436003> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<http://snomed.info/id/113091000> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<http://snomed.info/id/71040008> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+}""" ] ;
+    sh:targetClass :OncologyTreatmentAssessment .
+
+constraints:OncologyTreatmentAssessment_criteria a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:in ( :TraceableAuthorStatement :RECIST1dot1 :RECIST1dot0 ) ;
+            sh:path [ sh:inversePath rdf:type ] ] ;
+    sh:targetClass :OncologyTreatmentAssessment_criteria .
+
+constraints:OncologyTreatmentAssessment_progressionType a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:in ( :Metastatic :Regional :Unknown :Biochemical :Localized ) ;
+            sh:path [ sh:inversePath rdf:type ] ] ;
+    sh:targetClass :OncologyTreatmentAssessment_progressionType .
+
+constraints:OncologyTreatmentAssessment_result a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:in ( :StableDisease :CompleteResponse :ProgressiveDisease :Unknown :PartialResponse ) ;
+            sh:path [ sh:inversePath rdf:type ] ] ;
+    sh:targetClass :OncologyTreatmentAssessment_result .
+
+constraints:OxygenSaturation a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasMeasurementDateTime ],
+        [ sh:class :DataProviderInstitute ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasDataProviderInstitute ],
+        [ sh:class :AdministrativeCase ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasAdministrativeCase ],
+        [ sh:class :SubjectPseudoIdentifier ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasSubjectPseudoIdentifier ],
+        [ sh:class :BodySite ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasBodySite ],
+        [ sh:class :MeasurementMethod ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasMeasurementMethod ],
+        [ sh:in ( ucum:percent ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path ( :hasQuantity :hasUnit :hasCode ) ] ;
+    sh:targetClass :OxygenSaturation .

@@ -1,0 +1,232 @@
+@prefix : <https://biomedit.ch/rdf/sphn-ontology/sphn#> .
+@prefix chop: <https://biomedit.ch/rdf/sphn-resource/chop/> .
+@prefix constraints: <https://biomedit.ch/rdf/sphn-ontology-constraints/sphn#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix icd-10-gm: <https://biomedit.ch/rdf/sphn-resource/icd-10-gm/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix snomed: <http://snomed.info/id/> .
+@prefix sphn-atc: <https://biomedit.ch/rdf/sphn-resource/atc/> .
+@prefix sphn-loinc: <https://biomedit.ch/rdf/sphn-resource/loinc/> .
+@prefix ucum: <https://biomedit.ch/rdf/sphn-resource/ucum/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+constraints:HeartRate a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class snomed:271636001 ] [ sh:class snomed:261665006 ] [ sh:class snomed:61086009 ] ) ;
+            sh:path :hasRegularityCode ],
+        [ sh:class :BodySite ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasBodySite ],
+        [ sh:class snomed:128973006 ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasPhysiologicStateCode ],
+        [ sh:class :MeasurementMethod ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasMeasurementMethod ],
+        [ sh:class :AdministrativeCase ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasAdministrativeCase ],
+        [ sh:class :DataProviderInstitute ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasDataProviderInstitute ],
+        [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasMeasurementDateTime ],
+        [ sh:class :SubjectPseudoIdentifier ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasSubjectPseudoIdentifier ],
+        [ sh:class :Quantity ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasQuantity ] ;
+    sh:sparql [ a sh:SPARQLConstraint ;
+            sh:message "No subclasses of the specified codes are allowed" ;
+            sh:select """
+                                        SELECT ?this (<https://biomedit.ch/rdf/sphn-ontology/sphn#hasRegularityCode> as ?path) (?class as ?value)
+                                        WHERE {
+                                        ?this <https://biomedit.ch/rdf/sphn-ontology/sphn#hasRegularityCode>/<http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?class .
+                                        FILTER (?class NOT IN (<http://snomed.info/id/271636001>,<http://snomed.info/id/261665006>,<http://snomed.info/id/61086009>) ) .
+FILTER NOT EXISTS {<http://snomed.info/id/271636001> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<http://snomed.info/id/261665006> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+FILTER NOT EXISTS {<http://snomed.info/id/61086009> <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ ?class .}
+}""" ] ;
+    sh:targetClass :HeartRate .
+
+constraints:ICDODiagnosis a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class :DataProviderInstitute ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasDataProviderInstitute ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class :Terminology ] [ sh:class :Code ] ) ;
+            sh:path :hasTopographyCode ],
+        [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasCodingDateTime ],
+        [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasRecordDateTime ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:or ( [ sh:class :Terminology ] [ sh:class :Code ] ) ;
+            sh:path :hasMorphologyCode ],
+        [ sh:class :SubjectPseudoIdentifier ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasSubjectPseudoIdentifier ],
+        [ sh:datatype xsd:dateTime ;
+            sh:path :hasDateTime ],
+        [ sh:class :Age ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasSubjectAge ],
+        [ sh:class :AdministrativeCase ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasAdministrativeCase ] ;
+    sh:targetClass :ICDODiagnosis .
+
+constraints:InhaledOxygenConcentration a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class :AdministrativeCase ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasAdministrativeCase ],
+        [ sh:class :DataProviderInstitute ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasDataProviderInstitute ],
+        [ sh:in ( ucum:percent ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path ( :hasQuantity :hasUnit :hasCode ) ],
+        [ sh:class :DrugAdministrationEvent ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasOxygenFlowRate ],
+        [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasMeasurementDateTime ],
+        [ sh:class :SubjectPseudoIdentifier ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasSubjectPseudoIdentifier ],
+        [ sh:class :MedicalDevice ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasOxygenEquipment ],
+        [ sh:class :DataDetermination ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasDataDetermination ] ;
+    sh:targetClass :InhaledOxygenConcentration .
+
+constraints:Intent a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class snomed:363675004 ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasCode ] ;
+    sh:targetClass :Intent .
+
+constraints:LabAnalyzer a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class :Terminology ] [ sh:class :Code ] ) ;
+            sh:path :hasProductCode ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class :Terminology ] [ sh:class :Code ] ) ;
+            sh:path :hasTypeCode ],
+        [ sh:or ( [ sh:class :Terminology ] [ sh:class :Code ] ) ;
+            sh:path :hasCode ] ;
+    sh:targetClass :LabAnalyzer .
+
+constraints:LabResult a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class :LabTest ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasLabTest ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasQualitativeResult ],
+        [ sh:class :DataProviderInstitute ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasDataProviderInstitute ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class :Terminology ] [ sh:class :Code ] ) ;
+            sh:path :hasQualitativeResultCode ],
+        [ sh:class :Quantity ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasQuantitativeResult ],
+        [ sh:class :Biosample ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasBiosample ],
+        [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasReportDateTime ],
+        [ sh:class :ReferenceRange ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasReferenceRange ],
+        [ sh:class :SubjectPseudoIdentifier ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasSubjectPseudoIdentifier ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasComment ],
+        [ sh:class :AdministrativeCase ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasAdministrativeCase ] ;
+    sh:targetClass :LabResult .
+
+constraints:LabTest a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class sphn-loinc:LOINC ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path :hasCode ],
+        [ sh:class :LabAnalyzer ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasInstrument ],
+        [ sh:class :LabAnalyzer ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path :hasTestKit ] ;
+    sh:targetClass :LabTest .
