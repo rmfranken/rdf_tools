@@ -4,8 +4,12 @@ There is also a docker file which allows you to run the shacl validation in a vi
 Inside the dockerfile you can choose between using pyShacl or TopBraid SHACL.
 TopBraid shacl is superior, so is the default. Topbraid shacl also has ability to run an entire folder of instance data.
 
+Before building and running docker, use the config.ini file to point to the right file paths of instance data and shapes graphs.
 
 To run the dockerfile and be able to see the output:
+docker build -t [container name]
+
+and then
 
 docker run [container name]
 
