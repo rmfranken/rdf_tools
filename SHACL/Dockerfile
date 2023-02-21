@@ -30,7 +30,7 @@ RUN apt install python3 -y
 RUN apt install python3.10-venv -y
 RUN apt-get -y install python3-pip
 RUN python3 -m venv pythonshacl
-RUN python3 -m pip install pyshacl datetime
+RUN python3 -m pip install pyshacl datetime configparser
 
 WORKDIR /usr/app/src
 
@@ -39,7 +39,7 @@ COPY topbraid_shacl.py ./
 COPY pyshacl_shacl.py ./
 COPY instance_data ./instance_data
 COPY shapes_graphs ./shapes_graphs
-
+COPY config.ini ./
 COPY validation_reports ./validation_reports
 
 
