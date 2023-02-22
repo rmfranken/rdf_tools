@@ -10,6 +10,13 @@
 @prefix shsh: <http://www.w3.org/ns/shacl-shacl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix : <http://www.prefixtobedecided.ch/sdsc/> .
+
+: a owl:Ontology ;
+    owl:versionInfo "0.0.1"^^xsd:string ;
+    rdfs:comment "This is an ontology containing the concepts relevant for the SDSC Internal Knowledge Graph"^^xsd:string ;
+    owl:imports schema: , sh:
+    .
 
 schema:Person
   a rdfs:Class ;
@@ -354,3 +361,688 @@ schema:Person-memberOf
       ]
     ) ;
 .
+
+:Afrikaans a schema:Language ;
+	:bcpTag "af"^^xsd:string ;
+	skos:prefLabel "Afrikaans"@en^^xsd:string
+			.
+
+:Amharic a schema:Language ;
+	:bcpTag "am"^^xsd:string ;
+	skos:prefLabel "Amharic"@en^^xsd:string
+			.
+
+:Arabic a schema:Language ;
+	:bcpTag "ar"^^xsd:string ;
+	skos:prefLabel "Arabic"@en^^xsd:string
+			.
+
+:Mapudungun a schema:Language ;
+	:bcpTag "arn"^^xsd:string ;
+	skos:prefLabel "Mapudungun"@en^^xsd:string
+			.
+
+:Assamese a schema:Language ;
+	:bcpTag "as"^^xsd:string ;
+	skos:prefLabel "Assamese"@en^^xsd:string
+			.
+
+:Azerbaijani a schema:Language ;
+	:bcpTag "az"^^xsd:string ;
+	skos:prefLabel "Azerbaijani"@en^^xsd:string
+			.
+
+:Bashkir a schema:Language ;
+	:bcpTag "ba"^^xsd:string ;
+	skos:prefLabel "Bashkir"@en^^xsd:string
+			.
+
+:Belarusian a schema:Language ;
+	:bcpTag "be"^^xsd:string ;
+	skos:prefLabel "Belarusian"@en^^xsd:string
+			.
+
+:Bulgarian a schema:Language ;
+	:bcpTag "bg"^^xsd:string ;
+	skos:prefLabel "Bulgarian"@en^^xsd:string
+			.
+
+:Bengali a schema:Language ;
+	:bcpTag "bn"^^xsd:string ;
+	skos:prefLabel "Bengali"@en^^xsd:string
+			.
+
+:Tibetan a schema:Language ;
+	:bcpTag "bo"^^xsd:string ;
+	skos:prefLabel "Tibetan"@en^^xsd:string
+			.
+
+:Breton a schema:Language ;
+	:bcpTag "br"^^xsd:string ;
+	skos:prefLabel "Breton"@en^^xsd:string
+			.
+
+:Bosnian a schema:Language ;
+    :bcpTag "bs"^^xsd:string ;
+	skos:prefLabel "Bosnian"@en^^xsd:string
+			.
+
+:Catalan a schema:Language ;
+	:bcpTag "ca"^^xsd:string ;
+	skos:prefLabel "Catalan"@en^^xsd:string
+			.
+
+:Corsican a schema:Language ;
+	:bcpTag "co"^^xsd:string ;
+	skos:prefLabel "Corsican"@en^^xsd:string
+			.
+
+:Czech a schema:Language ;
+	:bcpTag "cs"^^xsd:string ;
+	skos:prefLabel "Czech"@en^^xsd:string
+			.
+
+:Welsh a schema:Language ;
+	:bcpTag "cy"^^xsd:string ;
+	skos:prefLabel "Welsh"@en^^xsd:string
+			.
+
+:Danish a schema:Language ;
+	:bcpTag "da"^^xsd:string ;
+	skos:prefLabel "Danish"@en^^xsd:string
+			.
+
+:German a schema:Language ;
+	:bcpTag "de"^^xsd:string ;
+	skos:prefLabel "German"@en^^xsd:string
+			.
+
+:LowerSorbian a schema:Language ;
+    :bcpTag "dsb"^^xsd:string ;
+	skos:prefLabel "Lower Sorbian"@en^^xsd:string
+		 .
+
+:Divehi a schema:Language ;
+	:bcpTag "dv"^^xsd:string ;
+	skos:prefLabel "Divehi"@en^^xsd:string
+			.
+
+:Greek a schema:Language ;
+	:bcpTag "el"^^xsd:string ;
+	skos:prefLabel "Greek"@en^^xsd:string
+			.
+
+:English a schema:Language ;
+	:bcpTag "en"^^xsd:string ;
+	skos:prefLabel "English"@en^^xsd:string
+			.
+
+:Spanish a schema:Language ;
+	:bcpTag "es"^^xsd:string ;
+	skos:prefLabel "Spanish"@en^^xsd:string
+			.
+
+:Estonian a schema:Language ;
+	:bcpTag "et"^^xsd:string ;
+	skos:prefLabel "Estonian"@en^^xsd:string
+			.
+
+:Basque a schema:Language ;
+	:bcpTag "eu"^^xsd:string ;
+	skos:prefLabel "Basque"@en^^xsd:string
+			.
+
+:Persian a schema:Language ;
+	:bcpTag "fa"^^xsd:string ;
+	skos:prefLabel "Persian"@en^^xsd:string
+			.
+
+:Finnish a schema:Language ;
+	:bcpTag "fi"^^xsd:string ;
+	skos:prefLabel "Finnish"@en^^xsd:string
+			.
+
+:Filipino a schema:Language ;
+	:bcpTag "fil"^^xsd:string ;
+	skos:prefLabel "Filipino"@en^^xsd:string
+			.
+
+:Faroese a schema:Language ;
+	:bcpTag "fo"^^xsd:string ;
+	skos:prefLabel "Faroese"@en^^xsd:string
+			.
+
+:French a schema:Language ;
+	:bcpTag "fr"^^xsd:string ;
+	skos:prefLabel "French"@en^^xsd:string
+			.
+
+:Frisian a schema:Language ;
+	:bcpTag "fy"^^xsd:string ;
+	skos:prefLabel "Frisian"@en^^xsd:string
+			.
+
+:Irish a schema:Language ;
+	:bcpTag "ga"^^xsd:string ;
+	skos:prefLabel "Irish"@en^^xsd:string
+			.
+
+:ScottishGaelic a schema:Language ;
+	:bcpTag "gd"^^xsd:string ;
+	skos:prefLabel "Scottish Gaelic"@en^^xsd:string ;
+			.
+:Galician a schema:Language ;
+	:bcpTag "gl"^^xsd:string ;
+	skos:prefLabel "Galician"@en^^xsd:string
+			.
+
+:Alsatian a schema:Language ;
+	:bcpTag "gsw"^^xsd:string ;
+	skos:prefLabel "Alsatian"@en^^xsd:string
+			.
+
+:Gujarati a schema:Language ;
+	:bcpTag "gu"^^xsd:string ;
+	skos:prefLabel "Gujarati"@en^^xsd:string
+			.
+
+:Hausa a schema:Language ;
+	:bcpTag "ha"^^xsd:string ;
+	skos:prefLabel "Hausa"@en^^xsd:string
+			.
+
+:Hebrew a schema:Language ;
+	:bcpTag "he"^^xsd:string ;
+	skos:prefLabel "Hebrew"@en^^xsd:string
+			.
+
+:Hindi a schema:Language ;
+	:bcpTag "hi"^^xsd:string ;
+	skos:prefLabel "Hindi"@en^^xsd:string
+			.
+
+:Croatian a schema:Language ;
+	:bcpTag "hr"^^xsd:string ;
+	skos:prefLabel "Croatian"@en^^xsd:string
+			.
+
+:UpperSorbian a schema:Language ;
+    :bcpTag "hsb"^^xsd:string ;
+	skos:prefLabel "Upper Sorbian"@en^^xsd:string
+		 	.
+
+:Hungarian a schema:Language ;
+	:bcpTag "hu"^^xsd:string ;
+	skos:prefLabel "Hungarian"@en^^xsd:string
+			.
+
+:Armenian a schema:Language ;
+	:bcpTag "hy"^^xsd:string ;
+	skos:prefLabel "Armenian"@en^^xsd:string
+			.
+
+:Indonesian a schema:Language ;
+    :bcpTag "id"^^xsd:string ;
+	skos:prefLabel "Indonesian"@en^^xsd:string
+			.
+
+:Igbo a schema:Language ;
+	:bcpTag "ig"^^xsd:string ;
+	skos:prefLabel "Igbo"@en^^xsd:string
+			.
+
+:Yi a schema:Language ;
+	:bcpTag "ii"^^xsd:string ;
+	skos:prefLabel "Yi"@en^^xsd:string
+			.
+
+:Icelandic a schema:Language ;
+	:bcpTag "is"^^xsd:string ;
+	skos:prefLabel "Icelandic"@en^^xsd:string
+			.
+
+:Italian a schema:Language ;
+	:bcpTag "it"^^xsd:string ;
+	skos:prefLabel "Italian"@en^^xsd:string
+			.
+
+:Inuktitut a schema:Language ;
+    :bcpTag "iu"^^xsd:string ;
+	skos:prefLabel "Inuktitut"@en^^xsd:string
+			.
+
+:Japanese a schema:Language ;
+	:bcpTag "ja"^^xsd:string ;
+	skos:prefLabel "Japanese"@en^^xsd:string
+			.
+
+:Georgian a schema:Language ;
+	:bcpTag "ka"^^xsd:string ;
+	skos:prefLabel "Georgian"@en^^xsd:string
+			.
+
+:Kazakh a schema:Language ;
+	:bcpTag "kk"^^xsd:string ;
+	skos:prefLabel "Kazakh"@en^^xsd:string
+			.
+
+:Greenlandic a schema:Language ;
+	:bcpTag "kl"^^xsd:string ;
+	skos:prefLabel "Greenlandic"@en^^xsd:string
+			.
+
+:Khmer a schema:Language ;
+	:bcpTag "km"^^xsd:string ;
+	skos:prefLabel "Khmer"@en^^xsd:string
+			.
+
+:Kannada a schema:Language ;
+	:bcpTag "kn"^^xsd:string ;
+	skos:prefLabel "Kannada"@en^^xsd:string
+			.
+
+:Korean a schema:Language ;
+	:bcpTag "ko"^^xsd:string ;
+	skos:prefLabel "Korean"@en^^xsd:string
+			.
+
+:Konkani a schema:Language ;
+	:bcpTag "kok"^^xsd:string ;
+	skos:prefLabel "Konkani"@en^^xsd:string
+			.
+
+:Kyrgyz a schema:Language ;
+	:bcpTag "ky"^^xsd:string ;
+	skos:prefLabel "Kyrgyz"@en^^xsd:string
+			.
+
+:Luxembourgish a schema:Language ;
+	:bcpTag "lb"^^xsd:string ;
+	skos:prefLabel "Luxembourgish"@en^^xsd:string
+			.
+
+:Lao a schema:Language ;
+	:bcpTag "lo"^^xsd:string ;
+	skos:prefLabel "Lao"@en^^xsd:string
+			.
+
+:Lithuanian a schema:Language ;
+	:bcpTag "lt"^^xsd:string ;
+	skos:prefLabel "Lithuanian"@en^^xsd:string
+			.
+
+:Latvian a schema:Language ;
+	:bcpTag "lv"^^xsd:string ;
+	skos:prefLabel "Latvian"@en^^xsd:string
+			.
+
+:Maori a schema:Language ;
+    :bcpTag "mi"^^xsd:string ;
+	skos:prefLabel "Maori"@en^^xsd:string
+			.
+
+:Macedonian a schema:Language ;
+    :bcpTag "mk"^^xsd:string ;
+	skos:prefLabel "Macedonian"@en^^xsd:string
+			.
+
+:Malayalam a schema:Language ;
+	:bcpTag "ml"^^xsd:string ;
+	skos:prefLabel "Malayalam"@en^^xsd:string
+			.
+
+:Mongolian a schema:Language ;
+    :bcpTag "mn"^^xsd:string ;
+	skos:prefLabel "Mongolian"@en^^xsd:string
+			.
+
+:Mohawk a schema:Language ;
+    :bcpTag "moh"^^xsd:string ;
+	skos:prefLabel "Mohawk"@en^^xsd:string
+			.
+
+:Marathi a schema:Language ;
+	:bcpTag "mr"^^xsd:string ;
+	skos:prefLabel "Marathi"@en^^xsd:string
+			.
+
+:Malay a schema:Language ;
+    :bcpTag "ms"^^xsd:string ;
+	skos:prefLabel "Malay"@en^^xsd:string
+			.
+
+:Maltese a schema:Language ;
+	:bcpTag "mt"^^xsd:string ;
+	skos:prefLabel "Maltese"@en^^xsd:string
+			.
+
+:Burmese a schema:Language ;
+	:bcpTag "my"^^xsd:string ;
+	skos:prefLabel "Burmese"@en^^xsd:string
+			.
+
+:NorwegianBokmal a schema:Language ;
+    :bcpTag "nb"^^xsd:string ;
+	skos:prefLabel "Norwegian (Bokmal)"@en^^xsd:string
+		 	.
+
+:Nepali a schema:Language ;
+    :bcpTag "ne"^^xsd:string ;
+	skos:prefLabel "Nepali"@en^^xsd:string
+			.
+
+:Dutch a schema:Language ;
+	:bcpTag "nl"^^xsd:string ;
+	skos:prefLabel "Dutch"@en^^xsd:string
+			.
+
+:NorwegianNynorsk a schema:Language ;
+    :bcpTag "nn"^^xsd:string ;
+	skos:prefLabel "Norwegian (Nynorsk)"@en^^xsd:string
+		 .
+
+:Norwegian a schema:Language ;
+	:bcpTag "no"^^xsd:string ;
+	skos:prefLabel "Norwegian"@en^^xsd:string
+			.
+
+:Sesotho a schema:Language ;
+    :bcpTag "st"^^xsd:string ;
+	skos:prefLabel "Sesotho"@en^^xsd:string
+			.
+
+:Occitan a schema:Language ;
+	:bcpTag "oc"^^xsd:string ;
+	skos:prefLabel "Occitan"@en^^xsd:string
+			.
+
+:Odia a schema:Language ;
+	:bcpTag "or"^^xsd:string ;
+	skos:prefLabel "Odia"@en^^xsd:string
+			.
+
+:Punjabi a schema:Language ;
+	:bcpTag "pa"^^xsd:string ;
+	skos:prefLabel "Punjabi"@en^^xsd:string
+			.
+
+:Polish a schema:Language ;
+	:bcpTag "pl"^^xsd:string ;
+	skos:prefLabel "Polish"@en^^xsd:string
+			.
+
+:Dari a schema:Language ;
+	:bcpTag "prs"^^xsd:string ;
+	skos:prefLabel "Dari"@en^^xsd:string
+			.
+
+:Pashto a schema:Language ;
+	:bcpTag "ps"^^xsd:string ;
+	skos:prefLabel "Pashto"@en^^xsd:string
+			.
+
+:Portuguese a schema:Language ;
+	:bcpTag "pt"^^xsd:string ;
+	skos:prefLabel "Portuguese"@en^^xsd:string
+			.
+
+:Kiche a schema:Language ;
+    :bcpTag "quc"^^xsd:string ;
+	skos:prefLabel "Kiche"@en^^xsd:string
+		.
+
+:Quechua a schema:Language ;
+	:bcpTag "qu"^^xsd:string ;
+	skos:prefLabel "Quechua"@en^^xsd:string
+			.
+
+:Romansh a schema:Language ;
+	:bcpTag "rm"^^xsd:string ;
+	skos:prefLabel "Romansh"@en^^xsd:string
+			.
+
+:Romanian a schema:Language ;
+	:bcpTag "ro"^^xsd:string ;
+	skos:prefLabel "Romanian"@en^^xsd:string
+			.
+
+:Russian a schema:Language ;
+	:bcpTag "ru"^^xsd:string ;
+	skos:prefLabel "Russian"@en^^xsd:string
+			.
+
+:Kinyarwanda a schema:Language ;
+	:bcpTag "rw"^^xsd:string ;
+	skos:prefLabel "Kinyarwanda"@en^^xsd:string
+			.
+
+:Sanskrit a schema:Language ;
+	:bcpTag "sa"^^xsd:string ;
+	skos:prefLabel "Sanskrit"@en^^xsd:string
+			.
+
+:Yakut a schema:Language ;
+	:bcpTag "sah"^^xsd:string ;
+	skos:prefLabel "Yakut"@en^^xsd:string
+			.
+
+:SamiNorthern a schema:Language ;
+    :bcpTag "se"^^xsd:string ;
+	skos:prefLabel "Sami (Northern)"@en^^xsd:string
+		 	.
+
+:Sinhala a schema:Language ;
+	:bcpTag "si"^^xsd:string ;
+	skos:prefLabel "Sinhala"@en^^xsd:string
+			.
+
+:Slovak a schema:Language ;
+	:bcpTag "sk"^^xsd:string ;
+	skos:prefLabel "Slovak"@en^^xsd:string
+			.
+
+:Slovenian a schema:Language ;
+	:bcpTag "sl"^^xsd:string ;
+	skos:prefLabel "Slovenian"@en^^xsd:string
+			.
+
+:SamiSouthern a schema:Language ;
+    :bcpTag "sma"^^xsd:string ;
+	skos:prefLabel "Sami (Southern)"@en^^xsd:string
+		 	.
+
+:SamiLule a schema:Language ;
+    :bcpTag "smj"^^xsd:string ;
+	skos:prefLabel "Sami (Lule)"@en^^xsd:string
+		 	.
+
+:SamiInari a schema:Language ;
+    :bcpTag "smn"^^xsd:string ;
+	skos:prefLabel "Sami (Inari)"@en^^xsd:string
+		 	.
+
+:SamiSkolt a schema:Language ;
+    :bcpTag "sms"^^xsd:string ;
+	skos:prefLabel "Sami (Skolt)"@en^^xsd:string
+		 	.
+
+:Albanian a schema:Language ;
+	:bcpTag "sq"^^xsd:string ;
+	skos:prefLabel "Albanian"@en^^xsd:string
+			.
+
+:Serbian a schema:Language ;
+    :bcpTag "sr"^^xsd:string ;
+	skos:prefLabel "Serbian"@en^^xsd:string
+			.
+
+:Swedish a schema:Language ;
+	:bcpTag "sv"^^xsd:string ;
+	skos:prefLabel "Swedish"@en^^xsd:string
+			.
+
+:Kiswahili a schema:Language ;
+	:bcpTag "sw"^^xsd:string ;
+	skos:prefLabel "Kiswahili"@en^^xsd:string
+			.
+
+:Syriac a schema:Language ;
+	:bcpTag "syc"^^xsd:string ;
+	skos:prefLabel "Syriac"@en^^xsd:string
+			.
+
+:Tamil a schema:Language ;
+	:bcpTag "ta"^^xsd:string ;
+	skos:prefLabel "Tamil"@en^^xsd:string
+			.
+
+:Telugu a schema:Language ;
+	:bcpTag "te"^^xsd:string ;
+	skos:prefLabel "Telugu"@en^^xsd:string
+			.
+
+:Tajik a schema:Language ;
+	:bcpTag "tg"^^xsd:string ;
+	skos:prefLabel "Tajik"@en^^xsd:string
+			.
+
+:Thai a schema:Language ;
+	:bcpTag "th"^^xsd:string ;
+	skos:prefLabel "Thai"@en^^xsd:string
+			.
+
+:Turkmen a schema:Language ;
+	:bcpTag "tk"^^xsd:string ;
+	skos:prefLabel "Turkmen"@en^^xsd:string
+			.
+
+:Tswana a schema:Language ;
+	:bcpTag "tn"^^xsd:string ;
+	skos:prefLabel "Tswana"@en^^xsd:string
+			.
+
+:Turkish a schema:Language ;
+	:bcpTag "tr"^^xsd:string ;
+	skos:prefLabel "Turkish"@en^^xsd:string
+			.
+
+:Tatar a schema:Language ;
+	:bcpTag "tt"^^xsd:string ;
+	skos:prefLabel "Tatar"@en^^xsd:string
+			.
+
+:Tamazight a schema:Language ;
+	:bcpTag "tzm"^^xsd:string ;
+	skos:prefLabel "Tamazight"@en^^xsd:string
+			.
+
+:Uyghur a schema:Language ;
+	:bcpTag "ug"^^xsd:string ;
+	skos:prefLabel "Uyghur"@en^^xsd:string
+			.
+
+:Ukrainian a schema:Language ;
+	:bcpTag "uk"^^xsd:string ;
+	skos:prefLabel "Ukrainian"@en^^xsd:string
+			.
+
+:Urdu a schema:Language ;
+	:bcpTag "ur"^^xsd:string ;
+	skos:prefLabel "Urdu"@en^^xsd:string
+			.
+
+:Uzbek a schema:Language ;
+    :bcpTag "uz"^^xsd:string ;
+	skos:prefLabel "Uzbek"@en^^xsd:string
+			.
+
+:Vietnamese a schema:Language ;
+    :bcpTag "vi"^^xsd:string ;
+	skos:prefLabel "Vietnamese"@en^^xsd:string
+			.
+
+:Wolof a schema:Language ;
+	:bcpTag "wo"^^xsd:string ;
+	skos:prefLabel "Wolof"@en^^xsd:string
+			.
+
+:Xhosa a schema:Language ;
+	:bcpTag "xh"^^xsd:string ;
+	skos:prefLabel "Xhosa"@en^^xsd:string
+			.
+
+:Yoruba a schema:Language ;
+	:bcpTag "yo"^^xsd:string ;
+	skos:prefLabel "Yoruba"@en^^xsd:string
+			.
+
+:Chinese a schema:Language ;
+	:bcpTag "zh"^^xsd:string ;
+	skos:prefLabel "Chinese"@en^^xsd:string
+			.
+
+:Zulu a schema:Language ;
+	:bcpTag "zu"^^xsd:string ;
+	skos:prefLabel "Zulu"@en^^xsd:string
+			.
+
+:Python a schema:ComputerLanguage ;
+    skos:prefLabel "Python"@en^^xsd:string ;
+    .
+:JavaScript a schema:ComputerLanguage ;
+    skos:prefLabel "JavaScript"@en^^xsd:string ;
+    .
+:Go a schema:ComputerLanguage ;
+    skos:prefLabel "Go"@en^^xsd:string ;
+    .
+:Java a schema:ComputerLanguage ;
+    skos:prefLabel "Java"@en^^xsd:string ;
+    .
+:Kotlin a schema:ComputerLanguage ;
+    skos:prefLabel "Kotlin"@en^^xsd:string ;
+    .
+:Csharp a schema:ComputerLanguage ;
+    skos:prefLabel "C#"@en^^xsd:string ;
+    .
+:PHP a schema:ComputerLanguage ;
+    skos:prefLabel "PHP"@en^^xsd:string ;
+    .
+:Swift a schema:ComputerLanguage ;
+    skos:prefLabel "Swift"@en^^xsd:string ;
+    .
+:R a schema:ComputerLanguage ;
+    skos:prefLabel "R"@en^^xsd:string ;
+    .
+:Ruby a schema:ComputerLanguage ;
+    skos:prefLabel "Ruby"@en^^xsd:string ;
+    .
+:C a schema:ComputerLanguage ;
+    skos:prefLabel "C"@en^^xsd:string ;
+    .
+:Cplusplus a schema:ComputerLanguage ;
+    skos:prefLabel "C++"@en^^xsd:string ;
+    .
+:TypeScript a schema:ComputerLanguage ;
+    skos:prefLabel "TypeScript"@en^^xsd:string ;
+    .
+:SQL a schema:ComputerLanguage ;
+    skos:prefLabel "SQL"@en^^xsd:string ;
+    .
+:Nix a schema:ComputerLanguage ;
+    skos:prefLabel "Nix"@en^^xsd:string ;
+    .
+:Scala a schema:ComputerLanguage ;
+    skos:prefLabel "Scala"@en^^xsd:string ;
+    .
+:Shell a schema:ComputerLanguage ;
+    skos:prefLabel "Shell"@en^^xsd:string ;
+    .
+:Rust a schema:ComputerLanguage ;
+    skos:prefLabel "Rust"@en^^xsd:string ;
+    .
+:Dart a schema:ComputerLanguage ;
+    skos:prefLabel "Dart"@en^^xsd:string ;
+    .
+:DM a schema:ComputerLanguage ;
+    skos:prefLabel "DM"@en^^xsd:string ;
+    .
