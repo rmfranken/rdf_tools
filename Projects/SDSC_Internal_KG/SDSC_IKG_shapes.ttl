@@ -20,6 +20,7 @@ schema:Person
   rdfs:subClassOf schema:Thing ;
   owl:equivalentClass <http://xmlns.com/foaf/0.1/Person> ;
   sh:property schema:Person-affiliation ;
+  sh:property schema:Person-alumniOf;
   sh:property schema:Person-birthDate ;
   sh:property schema:Person-email ;
   sh:property schema:Person-familyName ;
@@ -27,7 +28,8 @@ schema:Person
   sh:property schema:Person-jobTitle ;
   sh:property schema:Person-nationality ;
   sh:property schema:Person-memberOf ;
-  
+  sh:property schema:Person-knowsLanguage;
+  sh:property schema:Person-knowsAbout;
 .
 
 schema:EducationalOccupationalCredential
@@ -276,6 +278,14 @@ schema:Person-affiliation
   sh:name "affiliation" ;
 .
 
+schema:Person-alumniOf
+  a sh:PropertyShape ;
+  sh:path schema:alumniOf ;
+  sh:class schema:Organization ;
+  sh:description "An organization that the person is an alumni of."^^rdf:HTML ;
+  sh:name "alumniOf" ;
+.
+
 schema:Person-email
   a sh:PropertyShape ;
   sh:path schema:email ;
@@ -318,7 +328,14 @@ schema:Person-jobTitle
 schema:Person-nationality
   a sh:PropertyShape ;
   sh:path schema:nationality ;
-  sh:class schema:Country ;
+  sh:or (
+        [
+            sh:class schema:Country
+        ]
+        [
+            sh:datatype xsd:string
+        ]
+    ) ;
   sh:description "Nationality of the person."^^rdf:HTML ;
   sh:name "nationality" ;
 .
