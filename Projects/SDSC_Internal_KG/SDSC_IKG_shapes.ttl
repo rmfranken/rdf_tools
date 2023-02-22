@@ -1046,3 +1046,24 @@ schema:Person-memberOf
 :DM a schema:ComputerLanguage ;
     skos:prefLabel "DM"@en^^xsd:string ;
     .
+
+:SDSC a schema:Organization ;
+    skos:prefLabel "Swiss Data Science Center"@en^^xsd:string ;
+    .
+
+:EPFL a schema:Organization ;
+    skos:prefLabel "Ecole Polytechnique Federale de Lausanne"@fr^^xsd:string ;
+    .
+
+:ETHZ a schema:Organization ;
+    skos:prefLabel "Eidgenössische Technische Hochschule Zürich"@de^^xsd:string ;
+    .
+
+:Switzerland a schema:Country ;
+    skos:prefLabel "Switzerland"@en^^xsd:string ,
+                   "Schweiz"@de^^xsd:string ,
+                   "Suisse"@fr^^xsd:string ,
+                   "Svizzera"@it^^xsd:string ,
+                   "Zwitserland"@nl^^xsd:string
+                   .
+
